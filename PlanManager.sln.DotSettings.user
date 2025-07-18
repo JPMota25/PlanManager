@@ -1,0 +1,45 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AMethodBaseInvoker_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003F9282df70362b17ffae24d589dffe1e9bc7a730f1d7622551e6e964f_003FMethodBaseInvoker_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=46c70876_002D52a6_002D46db_002Da8a8_002Dfe8ca3ace290/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldBeTrueWithAYearLicenseAndExpireDateValid #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.Plan.LicenseTest.ShouldBeTrueWithAYearLicenseAndExpireDateValid&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=49891b2e_002D04b0_002D4bef_002D8758_002D1cdedb7ad951/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsLocked="True" Name="ShouldBeTrueWhenDocumentIsAPersonAndHasElevenCharacters" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.DocumentTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.EmailTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7c52c4c6_002Df28e_002D48c9_002D9482_002D66b8e0b0dae9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ShouldBeTrueWithAYearLicenseAndExpireDateValid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;ProjectFolder&gt;36AD62AC-067E-4266-809B-89D4C012AF57/d:Entities&lt;/ProjectFolder&gt;&#xD;
+    &lt;ProjectFolder&gt;36AD62AC-067E-4266-809B-89D4C012AF57/d:ValueObjects&lt;/ProjectFolder&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ce08f211_002D47da_002D42ce_002D9b76_002D5b9e6d9e0e06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.Plan.LicenseTest.ShouldBeTrueWithAForeverLicenseAndExpireDateNull&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d1715ab3_002D7efd_002D44b3_002Db011_002D194b10364b4c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FullNameTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.FullNameTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.IdTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.PhoneTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.UsernameTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.ValueObjects.AddressTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeTrueWhenIsAValidPerson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeFalseWhenPersonDocumentIsNotAValidDocument&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeFalseWhenPersonPhoneIsNotValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeFalseWhenPersonAddressIsNotValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeFalseWhenPersonEmailIsNotValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.ShouldBeFalseWhenPersonFullNameIsNotValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest.ShouldBeTrueWhenUserIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest.ShouldBeFalseWhenUserNameIsInvalid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest.ShouldBeTrueWhenPasswordIsNotInformed&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.Plan.LicenseTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

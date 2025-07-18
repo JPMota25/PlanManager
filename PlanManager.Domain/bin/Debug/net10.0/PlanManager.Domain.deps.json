@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "PlanManager.Domain/1.0.0": {
+        "dependencies": {
+          "Flunt": "2.0.5",
+          "Microsoft.EntityFrameworkCore.Abstractions": "10.0.0-preview.6.25358.103"
+        },
+        "runtime": {
+          "PlanManager.Domain.dll": {}
+        }
+      },
+      "Flunt/2.0.5": {
+        "runtime": {
+          "lib/netstandard2.0/Flunt.dll": {
+            "assemblyVersion": "2.0.5.0",
+            "fileVersion": "2.0.5.0"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Abstractions/10.0.0-preview.6.25358.103": {
+        "runtime": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.35903"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PlanManager.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Flunt/2.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
+      "path": "flunt/2.0.5",
+      "hashPath": "flunt.2.0.5.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Abstractions/10.0.0-preview.6.25358.103": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z1a/oCaq5IVIRZb7keesidJdjE+2KOUK74q5sDmVgcgZywvQPeQQ1gtq305OReH4Uj79JGt5pW5BnXeapc5ZSw==",
+      "path": "microsoft.entityframeworkcore.abstractions/10.0.0-preview.6.25358.103",
+      "hashPath": "microsoft.entityframeworkcore.abstractions.10.0.0-preview.6.25358.103.nupkg.sha512"
+    }
+  }
+}

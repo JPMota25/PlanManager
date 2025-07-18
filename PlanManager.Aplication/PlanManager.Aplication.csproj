@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Exceptions\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\PlanManager.Domain\PlanManager.Domain.csproj"/>
+        <ProjectReference Include="..\PlanManager.Infrastructure\PlanManager.Infrastructure.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1"/>
+    </ItemGroup>
+
+</Project>

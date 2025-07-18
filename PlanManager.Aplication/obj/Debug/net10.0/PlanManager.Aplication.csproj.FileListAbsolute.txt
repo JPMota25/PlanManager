@@ -1,0 +1,17 @@
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Aplication.deps.json
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Aplication.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Aplication.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.AssemblyInfoInputs.cache
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.AssemblyInfo.cs
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.csproj.CoreCompileInputs.cache
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\refint\PlanManager.Aplication.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\ref\PlanManager.Aplication.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Domain.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Infrastructure.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Domain.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\bin\Debug\net10.0\PlanManager.Infrastructure.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanManager.Aplication.csproj.AssemblyReference.cache
+C:\Users\supor\Projects\PlanManager\PlanManager.Aplication\obj\Debug\net10.0\PlanMana.4A6B2211.Up2Date
