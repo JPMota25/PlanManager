@@ -1,30 +1,27 @@
-﻿using PlanManager.Aplication.Commands;
-using PlanManager.Aplication.DTOs;
+﻿
+
 using PlanManager.Aplication.Interfaces.Profiles;
-using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.Profiles;
+using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Services.Profiles;
 
 public class PersonService : IPersonService {
 	private readonly IPersonRepository _personRepository;
-	private readonly ILogActivityService _logActivityService;
-
-	public PersonService(IPersonRepository personRepository, ILogActivityService logActivityService) {
+	public PersonService(IPersonRepository personRepository) {
 		_personRepository = personRepository;
-		_logActivityService = logActivityService;
 	}
 
-	public Task<Person> HandleCreatePerson(CreatePersonCommand model) {
-		throw new NotImplementedException();
+	public async Task<bool> VerifyPerson(Document document) {
+		return await _personRepository.ConfirmUniqueKey(document.Identification);
 	}
 
-	public Task<IList<Person>> HandleListPerson() {
-		throw new NotImplementedException();
+	public async  Task AddPerson(Person person) {
+		await _personRepository.AddAsync(person);
+		await _personRepository.SaveChangesAsync();
 	}
-
-	public Task<ResultDto<Person>> HandleSavePerson(Person person) {
+	public Task UpdatePerson(Person person) {
 		throw new NotImplementedException();
 	}
 }
