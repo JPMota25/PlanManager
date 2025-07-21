@@ -13,8 +13,10 @@ public class Description : ValueObject {
 		var contract = new Contract<Notification>().Requires().IsBetween(Value.Length, 0, 150, "Description");
 		AddNotifications(contract);
 	}
+
 	public Description(string value) {
 		Value = value;
 	}
+
 	public string Value { get; private set; }
 }

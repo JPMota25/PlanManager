@@ -8,9 +8,7 @@ public class PlanPermissionRelation : Entity {
 	public Id IdPlan { get; private set; }
 	public Plan? Plan { get; set; }
 
-	public PlanPermissionRelation() {
-
-	}
+	public PlanPermissionRelation() { }
 
 	public PlanPermissionRelation(Id idPlanPermission, Id idPlan) {
 		IdPlanPermission = idPlanPermission;

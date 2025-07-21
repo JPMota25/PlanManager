@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanManager.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using PlanManager.Infrastructure.Data;
 namespace PlanManager.Infrastructure.Migrations
 {
     [DbContext(typeof(PlanManagerDbContext))]
-    partial class PlanManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250721120929_AddTableCustomer")]
+    partial class AddTableCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,56 +24,6 @@ namespace PlanManager.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.License", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreatedAt");
-
-                    b.Property<string>("IdPlan")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Plan");
-
-                    b.Property<string>("IdSign")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Sign");
-
-                    b.Property<DateOnly?>("LastDaySynced")
-                        .HasColumnType("date")
-                        .HasColumnName("LastDaySynced");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Status");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Type");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("UpdatedAt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdPlan");
-
-                    b.HasIndex("IdSign");
-
-                    b.ToTable("License", (string)null);
-                });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Plan", b =>
                 {
@@ -162,82 +115,6 @@ namespace PlanManager.Infrastructure.Migrations
                     b.HasIndex("IdPlanPermission");
 
                     b.ToTable("PlanPermissionRelation", (string)null);
-                });
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Sign", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreatedAt");
-
-                    b.Property<string>("IdCompany")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Company");
-
-                    b.Property<string>("IdCustomer")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Customer");
-
-                    b.Property<DateTime?>("InitialTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("InitialTime");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Status");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("UpdatedAt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdCompany")
-                        .IsUnique();
-
-                    b.HasIndex("IdCustomer")
-                        .IsUnique();
-
-                    b.ToTable("Sign", (string)null);
-                });
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Customer", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreatedAt");
-
-                    b.Property<string>("IdPerson")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar")
-                        .HasColumnName("Person");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("UpdatedAt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdPerson")
-                        .IsUnique();
-
-                    b.ToTable("Customer", (string)null);
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Person", b =>
@@ -347,70 +224,6 @@ namespace PlanManager.Infrastructure.Migrations
                     b.HasIndex("User");
 
                     b.ToTable("LogActivity", (string)null);
-                });
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.License", b =>
-                {
-                    b.HasOne("PlanManager.Domain.Entities.Plan.Plan", "Plan")
-                        .WithMany()
-                        .HasForeignKey("IdPlan")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_License_Plan");
-
-                    b.HasOne("PlanManager.Domain.Entities.Plan.Sign", "Sign")
-                        .WithMany()
-                        .HasForeignKey("IdSign")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_License_Sign");
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Value", "Value", b1 =>
-                        {
-                            b1.Property<string>("LicenseId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<decimal>("ValueWith2Digits")
-                                .HasColumnType("decimal")
-                                .HasColumnName("Value");
-
-                            b1.HasKey("LicenseId");
-
-                            b1.ToTable("License");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LicenseId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.ExpireDate", "ExpireDate", b1 =>
-                        {
-                            b1.Property<string>("LicenseId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<DateOnly>("Expire")
-                                .HasColumnType("date")
-                                .HasColumnName("ExpireDate");
-
-                            b1.Property<int>("ProlongationInDays")
-                                .HasColumnType("int")
-                                .HasColumnName("ProlongationInDays");
-
-                            b1.HasKey("LicenseId");
-
-                            b1.ToTable("License");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LicenseId");
-                        });
-
-                    b.Navigation("ExpireDate");
-
-                    b.Navigation("Plan");
-
-                    b.Navigation("Sign");
-
-                    b.Navigation("Value")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Plan", b =>
@@ -548,39 +361,6 @@ namespace PlanManager.Infrastructure.Migrations
                     b.Navigation("Plan");
 
                     b.Navigation("PlanPermission");
-                });
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Sign", b =>
-                {
-                    b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Company")
-                        .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Plan.Sign", "IdCompany")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_Sign_Company");
-
-                    b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Customer")
-                        .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Plan.Sign", "IdCustomer")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_Sign_Customer");
-
-                    b.Navigation("Company");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Customer", b =>
-                {
-                    b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Person")
-                        .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Profiles.Customer", "IdPerson")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Customer_Person");
-
-                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Person", b =>

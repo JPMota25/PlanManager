@@ -19,14 +19,12 @@ public class PlanMap : IEntityTypeConfiguration<Plan> {
 		builder.HasOne(x => x.Company).WithMany().HasForeignKey(x => x.IdCompany).HasConstraintName("FK_Plan_Person_PersonId").OnDelete(DeleteBehavior.Restrict)
 			.IsRequired();
 
-		builder.OwnsOne(x => x.Name,name => {
-			name.Property(x=>x.Value).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(30).IsRequired();
-			name.HasIndex(x=>x.Value).IsUnique();
+		builder.OwnsOne(x => x.Name, name => {
+			name.Property(x => x.Value).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(30).IsRequired();
+			name.HasIndex(x => x.Value).IsUnique();
 		});
 
-		builder.OwnsOne(x => x.Value, value => {
-			value.Property(x => x.ValueWith2Digits).HasColumnType("decimal").HasColumnName("Value").IsRequired();
-		});
+		builder.OwnsOne(x => x.Value, value => { value.Property(x => x.ValueWith2Digits).HasColumnType("decimal").HasColumnName("Value").IsRequired(); });
 		builder.Property(x => x.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").IsRequired();
 		builder.Property(x => x.UpdatedAt).HasColumnName("UpdatedAt").HasColumnType("datetime2");
 	}

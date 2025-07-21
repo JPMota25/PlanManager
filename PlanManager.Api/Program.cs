@@ -6,12 +6,18 @@ using Microsoft.IdentityModel.Tokens;
 using PlanManager.Api.Midlewares;
 using PlanManager.Aplication;
 using PlanManager.Aplication.Interfaces;
+using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
+using PlanManager.Aplication.Services.Profiles;
 using PlanManager.Aplication.Services.Utils;
 using PlanManager.Domain.Entities.Utils;
 using PlanManager.Domain.Repositories;
+using PlanManager.Domain.Repositories.Profiles;
+using PlanManager.Domain.Repositories.Utils;
 using PlanManager.Infrastructure.Data;
 using PlanManager.Infrastructure.Repositories;
+using PlanManager.Infrastructure.Repositories.Profiles;
+using PlanManager.Infrastructure.Repositories.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,8 +74,15 @@ void ConfigureServices(WebApplicationBuilder builderServices) {
 	builderServices.Services.AddScoped<ILogActivityService, LogActivityService>();
 	builderServices.Services.AddScoped<IPasswordHashService, PasswordHashService>();
 	builderServices.Services.AddScoped<ITokenService, TokenService>();
+	builderServices.Services.AddScoped<IPersonService, PersonService>();
+	builderServices.Services.AddScoped<IUserService, UserService>();
+	builderServices.Services.AddScoped<ICustomerService, CustomerService>();
 
 	builderServices.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+	builderServices.Services.AddScoped<IPersonRepository, PersonRepository>();
+	builderServices.Services.AddScoped<IUserRepository, UserRepository>();
+	builderServices.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+	builderServices.Services.AddScoped<ILogActivityRepository, LogActivityRepository>();
 }
 
 void ConfigureAuthentication(WebApplicationBuilder builderAuthentication) {

@@ -8,7 +8,7 @@ namespace PlanManager.Tests.Entities.Plan;
 public class SignTest {
 	[Fact]
 	public void ShouldBePendingApprovalStatusWhenCreated() {
-		var sign = new Sign(Id.New(), Id.New(), new List<License>());
+		var sign = new Sign(Id.New(), Id.New());
 		Assert.Equal(ESignStatus.PendingApproval, sign.Status);
 	}
 }

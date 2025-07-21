@@ -61,7 +61,7 @@ public class License : Entity {
 		}
 	}
 
-	private void SetExpireDate(ExpireDate expireDate) {
+	private void SetExpireDate(ExpireDate? expireDate) {
 		ExpireDate = expireDate;
 		Validate();
 	}

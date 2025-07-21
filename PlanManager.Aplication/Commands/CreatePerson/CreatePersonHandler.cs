@@ -14,19 +14,26 @@ public class CreatePersonHandler : IHandler<CreatePersonCommand, PersonCreatedDt
 	private readonly IPersonService _personService;
 	private readonly ILogActivityService _logActivityService;
 
-	public CreatePersonHandler(IPersonService personService,  ILogActivityService logActivityService) {
+	public CreatePersonHandler(IPersonService personService, ILogActivityService logActivityService) {
 		_personService = personService;
 		_logActivityService = logActivityService;
 	}
 
 	public async Task<ResultDto<PersonCreatedDto>> Handle(CreatePersonCommand command) {
+		if (!command.IsValid)
+			return ResultDto<PersonCreatedDto>.Fail(command.Notifications);
+
 		var person = new Person(command.FullName, command.Email, command.Document, command.Phone, command.Address);
-		if (!person.IsValid)
+
+		if (await _personService.VerifyPerson(person.Document)) {
+			person.AddNotification("Person.Create", "Person already exists");
 			return ResultDto<PersonCreatedDto>.Fail(person.Notifications);
-		if(await _personService.VerifyPerson(person.Document))
-			return ResultDto<PersonCreatedDto>.Fail(new List<Notification>().Add(new Notification("Person.Handle", "Person is Alt")));
+		}
+
 		await _personService.AddPerson(person);
-		await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreatePerson, person.Id, new Description("Person created successfully"));
+		await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreatePerson, person.Id,
+			new Description("Person created successfully"));
+
 		return ResultDto<PersonCreatedDto>.Ok(new PersonCreatedDto(person.Id, person.FullName, person.Email));
 	}
 }

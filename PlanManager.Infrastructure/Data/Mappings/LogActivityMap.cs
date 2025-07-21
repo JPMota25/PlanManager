@@ -26,9 +26,8 @@ public class LogActivityMap : IEntityTypeConfiguration<LogActivity> {
 
 		builder.Property(x => x.ObjectId).HasConversion(converter).HasColumnName("ObjectId").HasColumnType("nvarchar");
 
-		builder.OwnsOne(x => x.Description, description => {
-			description.Property(x => x.Value).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(150).IsRequired();
-		});
+		builder.OwnsOne(x => x.Description,
+			description => { description.Property(x => x.Value).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(150).IsRequired(); });
 
 		builder.Property(x => x.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime").IsRequired();
 	}

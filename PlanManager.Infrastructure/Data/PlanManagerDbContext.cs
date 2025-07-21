@@ -15,6 +15,9 @@ public class PlanManagerDbContext : DbContext {
 	public DbSet<Plan> Plans { get; set; }
 	public DbSet<PlanPermission> PlanPermissions { get; set; }
 	public DbSet<PlanPermissionRelation> PlanPermissionRelations { get; set; }
+	public DbSet<Customer> Customers { get; set; }
+	public DbSet<Sign> Signs { get; set; }
+	public DbSet<License> Licenses { get; set; }
 
 	public DbSet<LogActivity> LogActivities { get; set; }
 
@@ -27,6 +30,9 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.ApplyConfiguration(new PlanMap());
 		modelBuilder.ApplyConfiguration(new PlanPermissionMap());
 		modelBuilder.ApplyConfiguration(new PlanPermissionRelationMap());
+		modelBuilder.ApplyConfiguration(new CustomerMap());
+		modelBuilder.ApplyConfiguration(new SignMap());
+		modelBuilder.ApplyConfiguration(new LicenseMap());
 
 
 		modelBuilder.Entity<Person>().Property(x => x.Status).HasConversion<string>();
@@ -35,6 +41,9 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.Entity<LogActivity>().Property(e => e.Action).HasConversion<string>();
 		modelBuilder.Entity<LogActivity>().Property(e => e.Code).HasConversion<string>();
 
+		modelBuilder.Entity<Sign>().Property(e => e.Status).HasConversion<string>();
 
+		modelBuilder.Entity<License>().Property(e => e.Status).HasConversion<string>();
+		modelBuilder.Entity<License>().Property(e => e.Type).HasConversion<string>();
 	}
 }
