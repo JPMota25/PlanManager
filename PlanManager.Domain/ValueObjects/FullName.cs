@@ -22,6 +22,8 @@ public class FullName : ValueObject {
 		Validate();
 	}
 
+	public FullName() { }
+
 	private void Validate() {
 		var contract = new Contract<FullName>().Requires().IsBetween(FirstName.Length, 3, 30, "firstName", "FirstName has to be beetween 3 and 30 characters")
 			.IsBetween(LastName.Length, 3, 50, "lastName", "LastName has to be beetween 5 and 50 characters");

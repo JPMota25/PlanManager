@@ -1,4 +1,4 @@
-﻿namespace SlotMe.Domain.Enums;
+﻿namespace PlanManager.Domain.Enums;
 
 public enum ELogType {
 	Error = 1,

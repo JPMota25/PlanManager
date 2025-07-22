@@ -1,6 +1,6 @@
 ﻿using PlanManager.Domain.Entities.Profiles;
+using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
-using SlotMe.Domain.Enums;
 
 namespace PlanManager.Domain.Entities.Utils;
 

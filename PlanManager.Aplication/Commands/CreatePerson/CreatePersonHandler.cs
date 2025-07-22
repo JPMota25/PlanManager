@@ -5,8 +5,8 @@ using PlanManager.Aplication.Interfaces;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Profiles;
+using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
-using SlotMe.Domain.Enums;
 
 namespace PlanManager.Aplication.Commands.CreatePerson;
 

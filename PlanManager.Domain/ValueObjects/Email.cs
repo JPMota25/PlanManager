@@ -15,6 +15,8 @@ public class Email : ValueObject {
 		Validate();
 	}
 
+	public Email() { }
+
 	private void Validate() {
 		var contract = new Contract<Email>().Requires().IsNotNullOrWhiteSpace(EmailAddress, "Email needs to be provided")
 			.IsEmail(EmailAddress, "Invalid email address!");

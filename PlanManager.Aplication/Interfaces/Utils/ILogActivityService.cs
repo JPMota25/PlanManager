@@ -1,5 +1,5 @@
-﻿using PlanManager.Domain.ValueObjects;
-using SlotMe.Domain.Enums;
+﻿using PlanManager.Domain.Enums;
+using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Interfaces.Utils;
 

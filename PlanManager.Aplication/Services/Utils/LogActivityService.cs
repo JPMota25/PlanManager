@@ -2,9 +2,9 @@
 using PlanManager.Aplication.Interfaces;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Utils;
+using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories.Utils;
 using PlanManager.Domain.ValueObjects;
-using SlotMe.Domain.Enums;
 
 namespace PlanManager.Aplication.Services.Utils;
 

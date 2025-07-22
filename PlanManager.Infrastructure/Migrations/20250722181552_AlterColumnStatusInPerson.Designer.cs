@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanManager.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using PlanManager.Infrastructure.Data;
 namespace PlanManager.Infrastructure.Migrations
 {
     [DbContext(typeof(PlanManagerDbContext))]
-    partial class PlanManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250722181552_AlterColumnStatusInPerson")]
+    partial class AlterColumnStatusInPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -614,7 +617,6 @@ namespace PlanManager.Infrastructure.Migrations
                                 .HasColumnName("HasHouseNumber");
 
                             b1.Property<string>("HouseNumber")
-                                .HasMaxLength(20)
                                 .HasColumnType("nvarchar")
                                 .HasColumnName("HouseNumber");
 
@@ -684,7 +686,6 @@ namespace PlanManager.Infrastructure.Migrations
 
                             b1.Property<string>("EmailAddress")
                                 .IsRequired()
-                                .HasMaxLength(100)
                                 .HasColumnType("nvarchar")
                                 .HasColumnName("EmailAddress");
 

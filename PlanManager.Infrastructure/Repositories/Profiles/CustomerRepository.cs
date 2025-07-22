@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.Profiles;
+using PlanManager.Domain.ValueObjects;
 using PlanManager.Infrastructure.Data;
 
 namespace PlanManager.Infrastructure.Repositories.Profiles;
@@ -12,8 +13,8 @@ public class CustomerRepository : Repository<Customer>, ICustomerRepository {
 		_context = context;
 	}
 
-	public async Task<bool> VerifyIfCustomerExists(string customerId) {
-		var customer = await _context.Customers.FirstOrDefaultAsync(x=>x.IdPerson.Identifier ==  customerId);
+	public async Task<bool> VerifyIfCustomerExists(Id customerId) {
+		var customer = await _context.Customers.FirstOrDefaultAsync(x=>x.Id == customerId);
 		return customer != null;
 	}
 }

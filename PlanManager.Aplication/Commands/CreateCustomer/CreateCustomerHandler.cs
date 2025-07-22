@@ -1,15 +1,16 @@
-﻿using PlanManager.Aplication.DTOs;
+﻿using MediatR;
+using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Aplication.Interfaces;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Profiles;
+using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
-using SlotMe.Domain.Enums;
 
 namespace PlanManager.Aplication.Commands.CreateCustomer;
 
-public class CreateCustomerHandler : IHandler<CreateCustomerCommand, PersonCreatedDto> {
+public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, ResultDto<PersonCreatedDto>> {
 	private readonly IPersonService _personService;
 	private readonly ILogActivityService _logActivityService;
 	private readonly ICustomerService _customerService;
@@ -20,7 +21,7 @@ public class CreateCustomerHandler : IHandler<CreateCustomerCommand, PersonCreat
 		_customerService = customerService;
 	}
 
-	public async Task<ResultDto<PersonCreatedDto>> Handle(CreateCustomerCommand command) {
+	public async Task<ResultDto<PersonCreatedDto>> Handle(CreateCustomerCommand command, CancellationToken cancellationToken) {
 		if (!command.IsValid)
 			return ResultDto<PersonCreatedDto>.Fail(command.Notifications);
 
@@ -31,7 +32,7 @@ public class CreateCustomerHandler : IHandler<CreateCustomerCommand, PersonCreat
 		}
 
 		var customer = new Customer(person.Id);
-		if (!await _customerService.VerifyIfCustomerExists(customer.IdPerson.Identifier)) {
+		if (await _customerService.VerifyIfCustomerExists(customer.IdPerson)) {
 			customer.AddNotification("Customer.Create", "Customer already exists");
 			return ResultDto<PersonCreatedDto>.Fail(customer.Notifications);
 		}

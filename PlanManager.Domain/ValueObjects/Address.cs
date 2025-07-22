@@ -13,7 +13,7 @@ public class Address : ValueObject {
 	public string Country { get; private set; }
 	public string Zipcode { get; private set; }
 
-	public Address(string neighboorhood, string houseNumber, bool hasHouseNumber, string complement, string street, string city, string state, string country,
+	public Address(string neighboorhood, string? houseNumber, bool hasHouseNumber, string complement, string street, string city, string state, string country,
 		string zipcode) {
 		Neighboorhood = neighboorhood;
 		HouseNumber = houseNumber;
@@ -47,4 +47,6 @@ public class Address : ValueObject {
 			contract.IsNotNullOrWhiteSpace(HouseNumber, "house", "Insert a house number");
 		AddNotifications(contract);
 	}
+
+	public Address() { }
 }

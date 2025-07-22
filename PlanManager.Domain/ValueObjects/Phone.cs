@@ -1,4 +1,5 @@
-﻿using Flunt.Validations;
+﻿using System.Text.Json.Serialization;
+using Flunt.Validations;
 
 namespace PlanManager.Domain.ValueObjects;
 
@@ -7,8 +8,7 @@ public class Phone : ValueObject {
 	public string DDD { get; private set; }
 	public string NumberWithDigit { get; private set; }
 
-	public Phone() { }
-
+	[JsonConstructor]
 	public Phone(string countryCode, string ddd, string numberWithDigit) {
 		CountryCode = Format(countryCode);
 		DDD = Format(ddd);
@@ -22,7 +22,7 @@ public class Phone : ValueObject {
 			.AreEquals(NumberWithDigit.Length, 9, "Phone.NumberWithDigit", "Should be a Valid Number with digit"));
 	}
 
-	private string Format(string removeSpecialCharacters) {
+	private static string Format(string removeSpecialCharacters) {
 		return removeSpecialCharacters.Replace("/", "").Replace(".", "").Replace("-", "").Replace(",", "").Replace(" ", "");
 	}
 }

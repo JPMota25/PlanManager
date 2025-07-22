@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+        <PackageReference Include="MediatR" Version="13.0.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0-preview.6.25358.103"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0-preview.6.25358.103"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0-preview.6.25358.103">
@@ -23,10 +26,6 @@
         <ProjectReference Include="..\PlanManager.Aplication\PlanManager.Aplication.csproj"/>
         <ProjectReference Include="..\PlanManager.Domain\PlanManager.Domain.csproj"/>
         <ProjectReference Include="..\PlanManager.Infrastructure\PlanManager.Infrastructure.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Controllers\"/>
     </ItemGroup>
 
 </Project>

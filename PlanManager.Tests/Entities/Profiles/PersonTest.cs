@@ -3,7 +3,7 @@ using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
 using Xunit;
 
-namespace PlanManager.Tests.Entities;
+namespace PlanManager.Tests.Entities.Profiles;
 
 public class PersonTest {
 	private readonly FullName _fullName;

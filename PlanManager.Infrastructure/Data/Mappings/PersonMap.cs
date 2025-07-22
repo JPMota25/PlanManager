@@ -15,7 +15,7 @@ public class PersonMap : IEntityTypeConfiguration<Person> {
 		builder.Property(x => x.Id).HasConversion(converter).HasColumnName("Id").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 		builder.HasKey(x => x.Id);
 
-		builder.Property(x => x.Status).HasColumnName("Status").HasColumnType("nvarchar").IsRequired();
+		builder.Property(x => x.Status).HasColumnName("Status").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
 
 		builder.OwnsOne(x => x.Document, document => {
 			document.Property(x => x.Identification).HasColumnName("Document").HasColumnType("nvarchar").HasMaxLength(14).IsRequired();
@@ -29,7 +29,7 @@ public class PersonMap : IEntityTypeConfiguration<Person> {
 		});
 
 		builder.OwnsOne(x => x.Email, email => {
-			email.Property(x => x.EmailAddress).HasColumnName("EmailAddress").HasColumnType("nvarchar").IsRequired();
+			email.Property(x => x.EmailAddress).HasColumnName("EmailAddress").HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
 			email.HasIndex(x => x.EmailAddress).IsUnique();
 		});
 
@@ -44,7 +44,7 @@ public class PersonMap : IEntityTypeConfiguration<Person> {
 			address.Property(x => x.City).HasColumnName("City").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
 			address.Property(x => x.Complement).HasColumnName("Complement").HasMaxLength(150).HasColumnType("nvarchar");
 			address.Property(x => x.HasHouseNumber).HasColumnName("HasHouseNumber").HasColumnType("bit").IsRequired();
-			address.Property(x => x.HouseNumber).HasColumnName("HouseNumber").HasColumnType("nvarchar");
+			address.Property(x => x.HouseNumber).HasColumnName("HouseNumber").HasColumnType("nvarchar").HasMaxLength(20);
 			address.Property(x => x.Street).HasColumnName("Street").HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
 			address.Property(x => x.Neighboorhood).HasColumnName("Neighboorhood").HasColumnType("nvarchar").HasMaxLength(30).IsRequired();
 			address.Property(x => x.State).HasColumnName("State").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();

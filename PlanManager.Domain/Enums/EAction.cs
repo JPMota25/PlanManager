@@ -1,4 +1,4 @@
-﻿namespace SlotMe.Domain.Enums;
+﻿namespace PlanManager.Domain.Enums;
 
 public enum EAction {
 	Created = 1,
