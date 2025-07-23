@@ -6,6 +6,7 @@ namespace PlanManager.Tests.ValueObjects;
 
 public class PhoneTest {
 	private readonly ITestOutputHelper _testOutputHelper;
+
 	public PhoneTest(ITestOutputHelper testOutputHelper) {
 		_testOutputHelper = testOutputHelper;
 	}

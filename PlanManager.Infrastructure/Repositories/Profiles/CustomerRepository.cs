@@ -14,7 +14,7 @@ public class CustomerRepository : Repository<Customer>, ICustomerRepository {
 	}
 
 	public async Task<bool> VerifyIfCustomerExists(Id customerId) {
-		var customer = await _context.Customers.FirstOrDefaultAsync(x=>x.Id == customerId);
+		var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == customerId);
 		return customer != null;
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
-using PlanManager.Domain.Entities.Plan;
+using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Entities.Utils;
 using PlanManager.Infrastructure.Data.Mappings;

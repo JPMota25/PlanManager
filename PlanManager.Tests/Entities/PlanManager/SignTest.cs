@@ -1,9 +1,9 @@
-﻿using PlanManager.Domain.Entities.Plan;
+﻿using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
 using Xunit;
 
-namespace PlanManager.Tests.Entities.Plan;
+namespace PlanManager.Tests.Entities.PlanManager;
 
 public class SignTest {
 	[Fact]

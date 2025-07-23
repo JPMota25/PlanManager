@@ -6,8 +6,8 @@ using Xunit;
 namespace PlanManager.Tests.Entities.Profiles;
 
 public class UserTest {
-	private Person _person;
-	private Username _username;
+	private readonly Person _person;
+	private readonly Username _username;
 	private readonly string _password;
 
 	public UserTest() {

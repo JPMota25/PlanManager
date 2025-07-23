@@ -323,8 +323,12 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("datetime")
                         .HasColumnName("CreatedAt");
 
+                    b.Property<string>("FromUserId")
+                        .HasColumnType("nvarchar(11)");
+
                     b.Property<string>("ObjectId")
                         .IsRequired()
+                        .HasMaxLength(11)
                         .HasColumnType("nvarchar")
                         .HasColumnName("ObjectId");
 
@@ -345,7 +349,7 @@ namespace PlanManager.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("User");
+                    b.HasIndex("FromUserId");
 
                     b.ToTable("LogActivity", (string)null);
                 });
@@ -663,6 +667,7 @@ namespace PlanManager.Infrastructure.Migrations
 
                             b1.Property<string>("Type")
                                 .IsRequired()
+                                .HasMaxLength(20)
                                 .HasColumnType("nvarchar")
                                 .HasColumnName("Type");
 
@@ -809,10 +814,7 @@ namespace PlanManager.Infrastructure.Migrations
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.User", "FromUser")
                         .WithMany()
-                        .HasForeignKey("User")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_LogActivity_User");
+                        .HasForeignKey("FromUserId");
 
                     b.OwnsOne("PlanManager.Domain.ValueObjects.Description", "Description", b1 =>
                         {

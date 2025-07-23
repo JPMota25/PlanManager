@@ -1,6 +1,6 @@
 ﻿using PlanManager.Domain.ValueObjects;
 
-namespace PlanManager.Domain.Entities.Plan;
+namespace PlanManager.Domain.Entities.PlanManager;
 
 public class PlanPermissionRelation : Entity {
 	public Id IdPlanPermission { get; private set; }

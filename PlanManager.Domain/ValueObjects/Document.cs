@@ -19,8 +19,6 @@ public class Document : ValueObject {
 		AddNotifications(contract);
 	}
 
-	public Document() { }
-
 	private static bool IsValidDocument(string identification, EDocumentType type) {
 		switch (type) {
 			case EDocumentType.Person when identification.Length == 11:

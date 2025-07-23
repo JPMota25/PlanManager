@@ -15,8 +15,7 @@ public class LogActivityMap : IEntityTypeConfiguration<LogActivity> {
 		builder.HasKey(x => x.Id);
 		builder.Property(x => x.Id).HasConversion(converter).HasColumnName("Id").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 
-		builder.Property(x => x.User).HasConversion(converter).HasColumnName("User").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
-		builder.HasOne(x => x.FromUser).WithMany().HasForeignKey(x => x.User).HasConstraintName("FK_LogActivity_User").OnDelete(DeleteBehavior.Cascade);
+		builder.Property(x => x.User).HasColumnName("User").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 
 		builder.Property(x => x.Type).HasColumnName("Type").HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
 
@@ -24,7 +23,7 @@ public class LogActivityMap : IEntityTypeConfiguration<LogActivity> {
 
 		builder.Property(x => x.Code).HasColumnName("Code").HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
 
-		builder.Property(x => x.ObjectId).HasConversion(converter).HasColumnName("ObjectId").HasColumnType("nvarchar");
+		builder.Property(x => x.ObjectId).HasConversion(converter).HasColumnName("ObjectId").HasColumnType("nvarchar").HasMaxLength(11);
 
 		builder.OwnsOne(x => x.Description,
 			description => { description.Property(x => x.Value).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(150).IsRequired(); });

@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
-using PlanManager.Aplication.Interfaces;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Profiles;
@@ -26,7 +25,7 @@ public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, Resu
 			return ResultDto<PersonCreatedDto>.Fail(command.Notifications);
 
 		var person = new Person(command.FullName, command.Email, command.Document, command.Phone, command.Address);
-		if (await _personService.VerifyPerson(person.Document)) {
+		if (await _personService.VerifyPersonByDocument(person.Document)) {
 			person.AddNotification("Person.Create", "Person already exists");
 			return ResultDto<PersonCreatedDto>.Fail(person.Notifications);
 		}
@@ -42,6 +41,7 @@ public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, Resu
 		await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreateCustomer, customer.Id,
 			new Description("Customer created successfully."));
 
-		return ResultDto<PersonCreatedDto>.Ok(new PersonCreatedDto(customer.Id, person.FullName, person.Email));
+		return ResultDto<PersonCreatedDto>.Ok(new PersonCreatedDto(customer.Id.Identifier, person.FullName.FirstName + person.FullName.LastName,
+			person.Email.EmailAddress));
 	}
 }

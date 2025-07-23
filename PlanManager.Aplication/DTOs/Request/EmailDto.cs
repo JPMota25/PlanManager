@@ -5,8 +5,6 @@ public class EmailDto {
 		EmailAddress = emailAddress;
 	}
 
-	public EmailDto() {
-
-	}
+	public EmailDto() { }
 	public string EmailAddress { get; set; }
 }

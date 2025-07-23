@@ -6,9 +6,7 @@ public class FullNameDto {
 		LastName = lastName;
 	}
 
-	public FullNameDto() {
-
-	}
+	public FullNameDto() { }
 	public string FirstName { get; set; }
 	public string LastName { get; set; }
 }

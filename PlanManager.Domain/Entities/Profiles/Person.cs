@@ -54,7 +54,7 @@ public class Person : Entity {
 	}
 
 	private void Validate() {
-		var contract = new Contract<Person>().IsTrue(Document.IsValid, "Person.Document", "Not a valid document");
+		var contract = new Contract<Person>().Requires().IsTrue(Document.IsValid, "Person.Document", "Not a valid document");
 		AddNotifications(Document.Notifications);
 		contract.IsTrue(FullName.IsValid, "Person.FullName", "Not a valid full name");
 		AddNotifications(FullName.Notifications);

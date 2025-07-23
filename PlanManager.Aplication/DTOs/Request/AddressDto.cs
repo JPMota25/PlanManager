@@ -1,7 +1,8 @@
 ﻿namespace PlanManager.Aplication.DTOs.Request;
 
 public class AddressDto {
-	public AddressDto(string neighboorhood, string? houseNumber, bool hasHouseNumber, string complement, string street, string city, string state, string country, string zipcode) {
+	public AddressDto(string neighboorhood, string? houseNumber, bool hasHouseNumber, string complement, string street, string city, string state,
+		string country, string zipcode) {
 		Neighboorhood = neighboorhood;
 		HouseNumber = houseNumber;
 		HasHouseNumber = hasHouseNumber;
@@ -13,9 +14,7 @@ public class AddressDto {
 		Zipcode = zipcode;
 	}
 
-	public AddressDto() {
-
-	}
+	public AddressDto() { }
 	public string Neighboorhood { get; set; }
 	public string? HouseNumber { get; set; }
 	public bool HasHouseNumber { get; set; }

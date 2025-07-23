@@ -8,9 +8,7 @@ public class DocumentDto {
 		Type = type;
 	}
 
-	public DocumentDto() {
-
-	}
+	public DocumentDto() { }
 
 	public string Identification { get; set; }
 	public EDocumentType Type { get; set; }

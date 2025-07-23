@@ -8,10 +8,9 @@ public class Phone : ValueObject {
 	public string DDD { get; private set; }
 	public string NumberWithDigit { get; private set; }
 
-	[JsonConstructor]
-	public Phone(string countryCode, string ddd, string numberWithDigit) {
+	public Phone(string countryCode, string DDD, string numberWithDigit) {
 		CountryCode = Format(countryCode);
-		DDD = Format(ddd);
+		this.DDD = Format(DDD);
 		NumberWithDigit = Format(numberWithDigit);
 		Validate();
 	}

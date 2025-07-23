@@ -1,13 +1,11 @@
-﻿using PlanManager.Domain.ValueObjects;
-
-namespace PlanManager.Aplication.DTOs.Response;
+﻿namespace PlanManager.Aplication.DTOs.Response;
 
 public class PersonCreatedDto {
-	public Id Id { get; set; }
-	public FullName Name { get; set; }
-	public Email Email { get; set; }
+	public string Id { get; set; }
+	public string Name { get; set; }
+	public string Email { get; set; }
 
-	public PersonCreatedDto(Id id, FullName name, Email email) {
+	public PersonCreatedDto(string id, string name, string email) {
 		Id = id;
 		Name = name;
 		Email = email;

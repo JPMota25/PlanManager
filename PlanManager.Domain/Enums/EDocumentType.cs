@@ -1,6 +1,6 @@
 ﻿namespace PlanManager.Domain.Enums;
 
 public enum EDocumentType {
-	Person,
-	Company
+	Person = 0,
+	Company = 1
 }

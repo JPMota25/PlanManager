@@ -20,10 +20,10 @@ public class LogActivityService : ILogActivityService {
 
 	public async Task CreateLog(ELogType type, EAction action, ELogCode code, Id objectId, Description description) {
 		var userIdClaim = _httpContextAccessor.HttpContext?.User.FindFirst("UserId");
-		var userId = new Id(userIdClaim != null ? userIdClaim.Value : "76207e5b-3fc5-4ad6-a7c0-c7bb7d1cfcae");
+		var userId = new Id(userIdClaim != null ? userIdClaim.Value : "12345678912");
 		if (userId == Id.Empty)
 			throw new Exception("Usuário não autenticado.");
-		var create = new LogActivity(userId, type, action, code, objectId, description);
+		var create = new LogActivity(userId.Identifier, type, action, code, objectId, description);
 		await _logActivityRepository.AddAsync(create);
 		await _logActivityRepository.SaveChangesAsync();
 	}

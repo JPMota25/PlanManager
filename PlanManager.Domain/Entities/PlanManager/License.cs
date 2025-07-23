@@ -3,7 +3,7 @@ using Flunt.Validations;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
 
-namespace PlanManager.Domain.Entities.Plan;
+namespace PlanManager.Domain.Entities.PlanManager;
 
 public class License : Entity {
 	public License(Id idSign, Id idPlan, ELicenseType type, ExpireDate? expireDate, Value value) {

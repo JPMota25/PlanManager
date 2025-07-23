@@ -5,7 +5,7 @@ using PlanManager.Domain.ValueObjects;
 namespace PlanManager.Domain.Entities.Utils;
 
 public class LogActivity : Entity {
-	public Id User { get; init; }
+	public string User { get; init; }
 	public User? FromUser { get; set; }
 	public ELogType Type { get; init; }
 	public EAction Action { get; init; }
@@ -15,7 +15,7 @@ public class LogActivity : Entity {
 
 	public LogActivity() { }
 
-	public LogActivity(Id user, ELogType type, EAction action, ELogCode code, Id objectId, Description description) {
+	public LogActivity(string user, ELogType type, EAction action, ELogCode code, Id objectId, Description description) {
 		Type = type;
 		User = user;
 		Action = action;

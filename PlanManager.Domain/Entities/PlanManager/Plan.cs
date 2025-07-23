@@ -3,7 +3,7 @@ using Flunt.Validations;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.ValueObjects;
 
-namespace PlanManager.Domain.Entities.Plan;
+namespace PlanManager.Domain.Entities.PlanManager;
 
 public class Plan : Entity {
 	public void SetName(Name name) {
@@ -20,12 +20,13 @@ public class Plan : Entity {
 	public Value Value { get; private set; }
 	public Person? Company { get; set; }
 	public Id IdCompany { get; init; }
-	public IList<PlanPermissionRelation> Permissions { get; private set; }
+	public IList<PlanPermissionRelation> Permissions { get; private set; } = new List<PlanPermissionRelation>();
 	public Plan() { }
 
-	protected Plan(Id idCompany, IList<PlanPermissionRelation> permissions) {
+	public Plan(Name name, Value value, Id idCompany) {
+		Name = name;
+		Value = value;
 		IdCompany = idCompany;
-		Permissions = permissions;
 		Validate();
 	}
 

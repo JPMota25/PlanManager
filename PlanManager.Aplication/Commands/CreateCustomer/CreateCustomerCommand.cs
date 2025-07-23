@@ -19,7 +19,7 @@ public class CreateCustomerCommand : Notifiable<Notification>, IRequest<ResultDt
 	}
 
 	public void Validate() {
-		var contract = new Contract<Notification>().IsTrue(FullName.IsValid, "Customer.FullName", "Customer full name Invalid");
+		var contract = new Contract<Notification>().Requires().IsTrue(FullName.IsValid, "Customer.FullName", "Customer full name Invalid");
 		AddNotifications(FullName.Notifications);
 		contract.IsTrue(Email.IsValid, "Customer.Email", "Customer email Invalid");
 		AddNotifications(Email.Notifications);

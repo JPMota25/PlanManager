@@ -4,7 +4,7 @@ using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.ValueObjects;
 
-namespace PlanManager.Domain.Entities.Plan;
+namespace PlanManager.Domain.Entities.PlanManager;
 
 public class Sign : Entity {
 	public Sign(Id idCustomer, Id idCompany) {

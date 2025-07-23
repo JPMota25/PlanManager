@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PlanManager.Domain.Entities.Plan;
+using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Infrastructure.Data.Mappings;

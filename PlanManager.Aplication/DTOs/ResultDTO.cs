@@ -11,6 +11,10 @@ public class ResultDto<T> where T : class {
 		return new ResultDto<T>(false, notifications);
 	}
 
+	public static ResultDto<T> Fail(Notification notification) {
+		return new ResultDto<T>(false, notification);
+	}
+
 	public bool Success { get; private set; }
 	public IList<T> Data { get; private set; } = [];
 	public IReadOnlyCollection<Notification> Errors { get; private set; } = [];
@@ -28,5 +32,10 @@ public class ResultDto<T> where T : class {
 	public ResultDto(bool success, IReadOnlyCollection<Notification> errors) {
 		Success = success;
 		Errors = errors;
+	}
+
+	public ResultDto(bool success, Notification notification) {
+		Success = success;
+		Errors = [notification];
 	}
 }

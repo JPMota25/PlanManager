@@ -8,6 +8,7 @@ public class CreateCustomerDto {
 		Phone = phone;
 		Address = address;
 	}
+
 	public FullNameDto FullName { get; set; }
 	public EmailDto Email { get; set; }
 	public DocumentDto Document { get; set; }

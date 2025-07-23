@@ -20,7 +20,7 @@ public class PersonMap : IEntityTypeConfiguration<Person> {
 		builder.OwnsOne(x => x.Document, document => {
 			document.Property(x => x.Identification).HasColumnName("Document").HasColumnType("nvarchar").HasMaxLength(14).IsRequired();
 			document.HasIndex(x => x.Identification).IsUnique();
-			document.Property(x => x.Type).HasColumnName("Type").HasColumnType("nvarchar").IsRequired();
+			document.Property(x => x.Type).HasColumnName("Type").HasColumnType("nvarchar").HasMaxLength(20).IsRequired();
 		});
 
 		builder.OwnsOne(x => x.FullName, fullName => {

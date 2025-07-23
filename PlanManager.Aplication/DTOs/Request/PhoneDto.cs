@@ -7,9 +7,7 @@ public class PhoneDto {
 		NumberWithDigit = numberWithDigit;
 	}
 
-	public PhoneDto() {
-
-	}
+	public PhoneDto() { }
 	public string CountryCode { get; set; }
 	public string DDD { get; set; }
 	public string NumberWithDigit { get; set; }
