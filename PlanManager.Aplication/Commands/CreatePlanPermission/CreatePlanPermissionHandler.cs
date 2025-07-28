@@ -11,7 +11,7 @@ using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Commands.CreatePlanPermission;
 
-public class CreatePlanPermissionHandler : IRequestHandler<CreatePlanPermissionCommand, ResultDto<PlanPermissionCreatedDto>> {
+public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHandler<CreatePlanPermissionCommand, ResultDto<PlanPermissionCreatedDto>> {
 	private readonly IPlanPermissionService _planPermissionService;
 	private readonly IPersonService _personService;
 	private readonly ILogActivityService _logActivityService;

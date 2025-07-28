@@ -18,6 +18,7 @@ public class CreatePlanHandler : Notifiable<Notification>, IRequestHandler<Creat
 		_planService = planService;
 		_logActivityService = logActivityService;
 	}
+
 	public async Task<ResultDto<PlanCreatedDto>> Handle(CreatePlanCommand request, CancellationToken cancellationToken) {
 		if (!request.IsValid)
 			return ResultDto<PlanCreatedDto>.Fail(request.Notifications);

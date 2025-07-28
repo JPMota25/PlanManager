@@ -15,6 +15,9 @@ public enum ELogCode {
 	Login = 11,
 	CreatePlanPermission = 12,
 	CreatePlan = 13,
+	CreatePlanPermissionRelation = 14,
+	CreateSign = 15,
+	CreateLicense = 16,
 
 	// Errors
 	DuplicatePersonKeys = 1001,

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PlanManager.Aplication.Commands.CreateCustomer;
 using PlanManager.Aplication.DTOs.Request;
+using PlanManager.Aplication.DTOs.Request.ValueObjects;
 using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Mappings;

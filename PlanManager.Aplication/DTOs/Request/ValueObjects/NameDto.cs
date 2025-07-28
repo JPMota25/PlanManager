@@ -1,4 +1,4 @@
-﻿namespace PlanManager.Aplication.DTOs.Request;
+﻿namespace PlanManager.Aplication.DTOs.Request.ValueObjects;
 
 public class NameDto {
 	public string Name { get; set; }

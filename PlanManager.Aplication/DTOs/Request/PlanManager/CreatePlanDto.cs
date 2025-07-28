@@ -1,4 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request;
+﻿using PlanManager.Aplication.DTOs.Request.ValueObjects;
+
+namespace PlanManager.Aplication.DTOs.Request;
 
 public class CreatePlanDto {
 	public NameDto Name { get; set; }

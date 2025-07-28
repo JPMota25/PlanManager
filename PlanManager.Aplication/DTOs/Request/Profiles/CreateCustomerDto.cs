@@ -1,4 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request;
+﻿using PlanManager.Aplication.DTOs.Request.ValueObjects;
+
+namespace PlanManager.Aplication.DTOs.Request;
 
 public class CreateCustomerDto {
 	public CreateCustomerDto(FullNameDto fullName, EmailDto email, DocumentDto document, PhoneDto phone, AddressDto address) {

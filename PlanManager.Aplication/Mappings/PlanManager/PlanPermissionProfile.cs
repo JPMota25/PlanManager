@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using PlanManager.Aplication.Commands.CreatePlanPermission;
 using PlanManager.Aplication.DTOs.Request;
+using PlanManager.Aplication.DTOs.Request.ValueObjects;
 using PlanManager.Domain.ValueObjects;
 
-namespace PlanManager.Aplication.Mappings;
+namespace PlanManager.Aplication.Mappings.PlanManager;
 
 public class PlanPermissionProfile : Profile {
 	public PlanPermissionProfile() {

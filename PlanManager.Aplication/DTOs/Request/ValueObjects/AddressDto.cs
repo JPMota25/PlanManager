@@ -1,4 +1,4 @@
-﻿namespace PlanManager.Aplication.DTOs.Request;
+﻿namespace PlanManager.Aplication.DTOs.Request.ValueObjects;
 
 public class AddressDto {
 	public AddressDto(string neighboorhood, string? houseNumber, bool hasHouseNumber, string complement, string street, string city, string state,

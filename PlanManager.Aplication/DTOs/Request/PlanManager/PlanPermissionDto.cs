@@ -1,4 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request;
+﻿using PlanManager.Aplication.DTOs.Request.ValueObjects;
+
+namespace PlanManager.Aplication.DTOs.Request;
 
 public class PlanPermissionDto {
 	public PlanPermissionDto(NameDto name, IdDto idCompany) {
