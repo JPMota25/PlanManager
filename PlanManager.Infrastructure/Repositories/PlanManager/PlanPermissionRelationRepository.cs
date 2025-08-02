@@ -14,6 +14,6 @@ public class PlanPermissionRelationRepository : Repository<PlanPermissionRelatio
 
 	public async Task<PlanPermissionRelation?> VerifyPlanPermissionRelation(PlanPermissionRelation permissionRelation) {
 		return await _context.PlanPermissionRelations.FirstOrDefaultAsync(x =>
-			x.IdPlan.Identifier == permissionRelation.IdPlan.Identifier && x.IdPlanPermission.Identifier == permissionRelation.IdPlanPermission.Identifier);
+			x.IdPlan == permissionRelation.IdPlan && x.IdPlanPermission == permissionRelation.IdPlanPermission);
 	}
 }

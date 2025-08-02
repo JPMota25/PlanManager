@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
-using PlanManager.Aplication.Interfaces;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Utils;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories.Utils;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Services.Utils;
 
@@ -18,13 +16,12 @@ public class LogActivityService : ILogActivityService {
 	}
 
 
-	public async Task CreateLog(ELogType type, EAction action, ELogCode code, Id objectId, Description description) {
+	public async Task CreateLog(ELogType type, EAction action, ELogCode code, string objectId, string description) {
 		var userIdClaim = _httpContextAccessor.HttpContext?.User.FindFirst("UserId");
-		var userId = new Id(userIdClaim != null ? userIdClaim.Value : "12345678912");
-		if (userId == Id.Empty)
+		var userId = userIdClaim != null ? userIdClaim.Value : "12345678912";
+		if (userId == Guid.Empty.ToString())
 			throw new Exception("Usuário não autenticado.");
-		var create = new LogActivity(userId.Identifier, type, action, code, objectId, description);
+		var create = new LogActivity(userId, type, action, code, objectId, description);
 		await _logActivityRepository.AddAsync(create);
-		await _logActivityRepository.SaveChangesAsync();
 	}
 }

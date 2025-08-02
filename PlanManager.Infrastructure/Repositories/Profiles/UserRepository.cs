@@ -1,4 +1,5 @@
-﻿using PlanManager.Domain.Entities.Profiles;
+﻿using Microsoft.EntityFrameworkCore;
+using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.Profiles;
 using PlanManager.Infrastructure.Data;
 
@@ -11,7 +12,8 @@ public class UserRepository : Repository<User>, IUserRepository {
 		_context = context;
 	}
 
-	public Task<User?> GetUser(string username) {
-		throw new NotImplementedException();
+	public async Task<User?> GetUser(string username) {
+		var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+		return user;
 	}
 }

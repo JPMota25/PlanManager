@@ -1,5 +1,3 @@
 ﻿namespace PlanManager.Domain.Enums;
 
-public enum EActionPermission {
-
-}
+public enum EActionPermission { }

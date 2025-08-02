@@ -1,7 +1,7 @@
 ﻿namespace PlanManager.Domain.Enums;
 
 public enum ESignStatus {
-	Active= 1,
+	Active = 1,
 	Inactive = 2,
 	Cancelled = 3,
 	Paused = 4,

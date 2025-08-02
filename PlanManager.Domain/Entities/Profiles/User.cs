@@ -1,5 +1,4 @@
 ﻿using Flunt.Validations;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Domain.Entities.Profiles;
 
@@ -7,15 +6,14 @@ public class User : Entity {
 	public void SetPassword(string password) {
 		Password = password;
 	}
-
 	public Person? Person { get; set; }
-	public Id IdPerson { get; init; }
-	public Username Username { get; init; }
+	public string IdPerson { get; private set; }
+	public string Username { get; private set; }
 	public string Password { get; private set; }
 
 	public User() { }
 
-	public User(Id idPerson, Username username, string password) {
+	public User(string idPerson, string username, string password) : base(true) {
 		IdPerson = idPerson;
 		Username = username;
 		Password = password;
@@ -24,9 +22,6 @@ public class User : Entity {
 
 	private void Validate() {
 		var contract = new Contract<User>().Requires();
-		contract.IsTrue(Username.IsValid, "User.Username", "Username Invalid");
-		AddNotifications(Username.Notifications);
-		contract.IsNotNullOrWhiteSpace(Password, "User.Password", "Password Invalid");
 		AddNotifications(contract);
 	}
 }

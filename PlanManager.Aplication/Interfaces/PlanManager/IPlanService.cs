@@ -1,9 +1,8 @@
 ﻿using PlanManager.Domain.Entities.PlanManager;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Aplication.Interfaces.PlanManager;
 
 public interface IPlanService {
-	Task<Plan?> GetPlanByName(Name name);
+	Task<Plan?> GetPlanByNameAndCompany(string name, string idCompany);
 	Task AddPlan(Plan plan);
 }

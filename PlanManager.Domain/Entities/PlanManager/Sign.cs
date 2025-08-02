@@ -2,12 +2,11 @@
 using Flunt.Validations;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Enums;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Domain.Entities.PlanManager;
 
 public class Sign : Entity {
-	public Sign(Id idCustomer, Id idCompany) {
+	public Sign(string idCustomer, string idCompany) : base(true) {
 		IdCustomer = idCustomer;
 		IdCompany = idCompany;
 		InitialTime = DateTime.UtcNow;
@@ -16,7 +15,7 @@ public class Sign : Entity {
 	}
 
 	private void Validate() {
-		var contract = new Contract<Notification>().IsTrue(IdCustomer.IsValid, "Sign.IdCustomer").IsTrue(IdCompany.IsValid, "Sign.IdCompany");
+		var contract = new Contract<Notification>();
 		AddNotifications(contract);
 	}
 
@@ -24,9 +23,9 @@ public class Sign : Entity {
 		Status = status;
 	}
 
-	public Id IdCustomer { get; private set; }
+	public string IdCustomer { get; private set; }
 	public Person? Customer { get; set; }
-	public Id IdCompany { get; private set; }
+	public string IdCompany { get; private set; }
 	public Person? Company { get; private set; }
 	public DateTime? InitialTime { get; init; }
 	public ESignStatus Status { get; private set; }

@@ -1,6 +1,5 @@
 ﻿using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Enums;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Api.Middlewares;
 
@@ -29,6 +28,6 @@ public class ExceptionMiddleware {
 	private async Task CreateLogError(EAction action, ELogCode code, string message) {
 		using var scope = _services.CreateScope();
 		var logService = scope.ServiceProvider.GetRequiredService<ILogActivityService>();
-		await logService.CreateLog(ELogType.Error, action, code, Id.Empty, new Description(message));
+		await logService.CreateLog(ELogType.Error, action, code, Guid.Empty.ToString(), message);
 	}
 }

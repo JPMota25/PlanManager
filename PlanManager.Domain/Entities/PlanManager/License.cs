@@ -1,25 +1,23 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 using PlanManager.Domain.Enums;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Domain.Entities.PlanManager;
 
 public class License : Entity {
-	public License(Id idSign, Id idPlan, ELicenseType type, ExpireDate? expireDate, Value value) {
+	public License(string idSign, string idPlan, ELicenseType type, DateOnly? expire, int prolongationInDays, decimal value) : base(true) {
 		IdSign = idSign;
 		IdPlan = idPlan;
 		Type = type;
-		ExpireDate = expireDate;
+		Expire = expire;
+		ProlongationInDays = prolongationInDays;
 		Status = ELicenseStatus.PendingInitiation;
 		Value = value;
 		Validate();
 	}
 
 	private void Validate() {
-		var contract = new Contract<Notification>().Requires().IsTrue(IdSign.IsValid, "License.IdSign").IsTrue(Value.IsValid, "License.Value");
-		if (ExpireDate != null)
-			contract.IsTrue(ExpireDate.IsValid, "License.ExpireDate");
+		var contract = new Contract<Notification>().Requires();
 		AddNotifications(contract);
 	}
 
@@ -31,11 +29,11 @@ public class License : Entity {
 			case ELicenseType.Month:
 			case ELicenseType.Trial1Month:
 				SetStatus(ELicenseStatus.Active);
-				SetExpireDate(new ExpireDate(DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(1)), prolongationInDays));
+				SetExpireDate(DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(1)), prolongationInDays);
 				break;
 			case ELicenseType.Year:
 				SetStatus(ELicenseStatus.Active);
-				SetExpireDate(new ExpireDate(DateOnly.FromDateTime(DateTime.UtcNow.AddYears(1)), prolongationInDays));
+				SetExpireDate(DateOnly.FromDateTime(DateTime.UtcNow.AddYears(1)), prolongationInDays);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -48,12 +46,12 @@ public class License : Entity {
 		switch (Type) {
 			case ELicenseType.Forever:
 				SetStatus(ELicenseStatus.Active);
-				SetExpireDate(null);
+				SetExpireDate(null, 0);
 				break;
 			case ELicenseType.Month:
 			case ELicenseType.Year:
 			case ELicenseType.Trial1Month:
-				if (ExpireDate is { IsValid: false })
+				if (Expire.Value.AddDays(ProlongationInDays) <= DateOnly.FromDateTime(DateTime.UtcNow))
 					SetStatus(ELicenseStatus.Expired);
 				break;
 			default:
@@ -61,8 +59,9 @@ public class License : Entity {
 		}
 	}
 
-	private void SetExpireDate(ExpireDate? expireDate) {
-		ExpireDate = expireDate;
+	private void SetExpireDate(DateOnly? expire, int prolongationInDays) {
+		Expire = expire;
+		ProlongationInDays = prolongationInDays;
 		Validate();
 	}
 
@@ -76,7 +75,7 @@ public class License : Entity {
 		Validate();
 	}
 
-	public void SetValue(Value value) {
+	public void SetValue(decimal value) {
 		Value = value;
 		Validate();
 	}
@@ -85,13 +84,14 @@ public class License : Entity {
 		LastDaySynced = lastDaySynced;
 	}
 
-	public Id IdSign { get; private set; }
+	public string IdSign { get; private set; }
 	public Sign? Sign { get; set; }
 	public Plan? Plan { get; set; }
-	public Id IdPlan { get; init; }
-	public Value Value { get; private set; }
+	public string IdPlan { get; private set; }
+	public decimal Value { get; private set; }
 	public ELicenseType Type { get; private set; }
-	public ExpireDate? ExpireDate { get; private set; }
+	public DateOnly? Expire { get; private set; }
+	public int ProlongationInDays { get; private set; }
 	public DateOnly? LastDaySynced { get; private set; }
 	public ELicenseStatus Status { get; private set; }
 	public License() { }

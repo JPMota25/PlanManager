@@ -18,6 +18,5 @@ public class PlanPermissionRelationService : IPlanPermissionRelationService {
 
 	public async Task AddPlanPermissionRelation(PlanPermissionRelation planPermissionRelation) {
 		await _planPermissionRelationRepository.AddAsync(planPermissionRelation);
-		await _planPermissionRelationRepository.SaveChangesAsync();
 	}
 }

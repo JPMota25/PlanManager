@@ -5,7 +5,7 @@ using PlanManager.Infrastructure.Data;
 
 namespace PlanManager.Infrastructure.Repositories.PlanManager;
 
-public class SignRepository: Repository<Sign>, ISignRepository {
+public class SignRepository : Repository<Sign>, ISignRepository {
 	private readonly PlanManagerDbContext _context;
 
 	public SignRepository(PlanManagerDbContext context) : base(context) {
@@ -13,6 +13,6 @@ public class SignRepository: Repository<Sign>, ISignRepository {
 	}
 
 	public async Task<Sign?> GetSign(Sign sign) {
-		return await _context.Signs.FirstOrDefaultAsync(x=>x.IdCompany == sign.IdCompany && x.IdCustomer == sign.IdCustomer);
+		return await _context.Signs.FirstOrDefaultAsync(x => x.IdCompany == sign.IdCompany && x.IdCustomer == sign.IdCustomer);
 	}
 }

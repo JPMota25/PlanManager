@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlanManager.Aplication.Commands.CreateCustomer;
+using PlanManager.Aplication.Commands.Profiles.Customer.CreateCustomer;
 using PlanManager.Aplication.DTOs.Request;
+using PlanManager.Aplication.DTOs.Request.Profiles;
 
 namespace PlanManager.Api.Controllers;
 

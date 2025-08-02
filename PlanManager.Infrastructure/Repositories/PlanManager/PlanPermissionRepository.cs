@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Repositories.PlanManager;
-using PlanManager.Domain.ValueObjects;
 using PlanManager.Infrastructure.Data;
 
 namespace PlanManager.Infrastructure.Repositories.PlanManager;
@@ -13,8 +12,8 @@ public class PlanPermissionRepository : Repository<PlanPermission>, IPlanPermiss
 		_context = context;
 	}
 
-	public async Task<bool> VerifyPlanPermissionIsUniqueByName(Name name) {
-		var result = await _context.PlanPermissions.FirstOrDefaultAsync(x => x.Name.Value == name.Value);
+	public async Task<bool> VerifyPlanPermissionIsUniqueByName(string name) {
+		var result = await _context.PlanPermissions.FirstOrDefaultAsync(x => x.Name == name);
 		return result == null;
 	}
 }

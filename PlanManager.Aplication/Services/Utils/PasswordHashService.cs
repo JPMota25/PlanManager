@@ -8,12 +8,12 @@ namespace PlanManager.Aplication.Services.Utils;
 public class PasswordHashService : IPasswordHashService {
 	public bool VerifyPassword(string password, string hash, User user) {
 		var hasher = new PasswordHasher<object>();
-		return hasher.VerifyHashedPassword(user, password, hash) == PasswordVerificationResult.Success;
+		return hasher.VerifyHashedPassword(user, hash, password) == PasswordVerificationResult.Success;
 	}
 
 	public string HashPassword(string password) {
 		var hasher = new PasswordHasher<User>();
-		var result = hasher.HashPassword(null!, password);
+		var result = hasher.HashPassword(new User(), password);
 		return result;
 	}
 }

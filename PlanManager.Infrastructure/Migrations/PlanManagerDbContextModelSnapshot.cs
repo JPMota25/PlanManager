@@ -22,7 +22,7 @@ namespace PlanManager.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.License", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.License", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(11)
@@ -32,6 +32,10 @@ namespace PlanManager.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("CreatedAt");
+
+                    b.Property<DateOnly>("Expire")
+                        .HasColumnType("date")
+                        .HasColumnName("ExpireDate");
 
                     b.Property<string>("IdPlan")
                         .IsRequired()
@@ -49,6 +53,10 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("date")
                         .HasColumnName("LastDaySynced");
 
+                    b.Property<int>("ProlongationInDays")
+                        .HasColumnType("int")
+                        .HasColumnName("ProlongationInDays");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar")
@@ -63,6 +71,10 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedAt");
 
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal")
+                        .HasColumnName("Value");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdPlan");
@@ -72,7 +84,7 @@ namespace PlanManager.Infrastructure.Migrations
                     b.ToTable("License", (string)null);
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Plan", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Plan", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(11)
@@ -89,23 +101,42 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("nvarchar")
                         .HasColumnName("IdCompany");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Name");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedAt");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal")
+                        .HasColumnName("Value");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdCompany");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Plan", (string)null);
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.PlanPermission", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.PlanPermission", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(28)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Code");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -117,18 +148,27 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("nvarchar")
                         .HasColumnName("IdCompany");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Name");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedAt");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.HasIndex("IdCompany");
 
                     b.ToTable("PlanPermission", (string)null);
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.PlanPermissionRelation", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.PlanPermissionRelation", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(11)
@@ -164,7 +204,7 @@ namespace PlanManager.Infrastructure.Migrations
                     b.ToTable("PlanPermissionRelation", (string)null);
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Sign", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Sign", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(11)
@@ -247,9 +287,90 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("nvarchar")
                         .HasColumnName("Id");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("City");
+
+                    b.Property<string>("Complement")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Complement");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Country");
+
+                    b.Property<string>("CountryCode")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("CountryCode");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("CreatedAt");
+
+                    b.Property<string>("DDD")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("DDD");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Document");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("EmailAddress");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("FirstName");
+
+                    b.Property<bool>("HasHouseNumber")
+                        .HasColumnType("bit")
+                        .HasColumnName("HasHouseNumber");
+
+                    b.Property<string>("HouseNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("HouseNumber");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("LastName");
+
+                    b.Property<string>("Neighboorhood")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Neighboorhood");
+
+                    b.Property<string>("NumberWithDigit")
+                        .IsRequired()
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("PhoneNumberWithDigit");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("State");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -257,11 +378,35 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("nvarchar")
                         .HasColumnName("Status");
 
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Street");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Type");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedAt");
 
+                    b.Property<string>("Zipcode")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Zipcode");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Document")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Person", (string)null);
                 });
@@ -285,12 +430,19 @@ namespace PlanManager.Infrastructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasMaxLength(255)
                         .HasColumnType("nvarchar")
                         .HasColumnName("Password");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("UpdatedAt");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Username");
 
                     b.HasKey("Id");
 
@@ -323,6 +475,12 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("datetime")
                         .HasColumnName("CreatedAt");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Description");
+
                     b.Property<string>("FromUserId")
                         .HasColumnType("nvarchar(11)");
 
@@ -354,71 +512,28 @@ namespace PlanManager.Infrastructure.Migrations
                     b.ToTable("LogActivity", (string)null);
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.License", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.License", b =>
                 {
-                    b.HasOne("PlanManager.Domain.Entities.Plan.Plan", "Plan")
+                    b.HasOne("PlanManager.Domain.Entities.PlanManager.Plan", "Plan")
                         .WithMany()
                         .HasForeignKey("IdPlan")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_License_Plan");
 
-                    b.HasOne("PlanManager.Domain.Entities.Plan.Sign", "Sign")
+                    b.HasOne("PlanManager.Domain.Entities.PlanManager.Sign", "Sign")
                         .WithMany()
                         .HasForeignKey("IdSign")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_License_Sign");
 
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Value", "Value", b1 =>
-                        {
-                            b1.Property<string>("LicenseId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<decimal>("ValueWith2Digits")
-                                .HasColumnType("decimal")
-                                .HasColumnName("Value");
-
-                            b1.HasKey("LicenseId");
-
-                            b1.ToTable("License");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LicenseId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.ExpireDate", "ExpireDate", b1 =>
-                        {
-                            b1.Property<string>("LicenseId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<DateOnly>("Expire")
-                                .HasColumnType("date")
-                                .HasColumnName("ExpireDate");
-
-                            b1.Property<int>("ProlongationInDays")
-                                .HasColumnType("int")
-                                .HasColumnName("ProlongationInDays");
-
-                            b1.HasKey("LicenseId");
-
-                            b1.ToTable("License");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LicenseId");
-                        });
-
-                    b.Navigation("ExpireDate");
-
                     b.Navigation("Plan");
 
                     b.Navigation("Sign");
-
-                    b.Navigation("Value")
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Plan", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Plan", b =>
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Company")
                         .WithMany()
@@ -427,55 +542,10 @@ namespace PlanManager.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Plan_Person_PersonId");
 
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Name", "Name", b1 =>
-                        {
-                            b1.Property<string>("PlanId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(30)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Name");
-
-                            b1.HasKey("PlanId");
-
-                            b1.HasIndex("Value")
-                                .IsUnique();
-
-                            b1.ToTable("Plan");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PlanId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Value", "Value", b1 =>
-                        {
-                            b1.Property<string>("PlanId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<decimal>("ValueWith2Digits")
-                                .HasColumnType("decimal")
-                                .HasColumnName("Value");
-
-                            b1.HasKey("PlanId");
-
-                            b1.ToTable("Plan");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PlanId");
-                        });
-
                     b.Navigation("Company");
-
-                    b.Navigation("Name")
-                        .IsRequired();
-
-                    b.Navigation("Value")
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.PlanPermission", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.PlanPermission", b =>
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Company")
                         .WithMany()
@@ -484,66 +554,19 @@ namespace PlanManager.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_PlanPermission_Company");
 
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Name", "Name", b1 =>
-                        {
-                            b1.Property<string>("PlanPermissionId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(30)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Name");
-
-                            b1.HasKey("PlanPermissionId");
-
-                            b1.ToTable("PlanPermission");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PlanPermissionId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.PermissionCode", "Code", b1 =>
-                        {
-                            b1.Property<string>("PlanPermissionId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Code")
-                                .IsRequired()
-                                .HasMaxLength(28)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Code");
-
-                            b1.HasKey("PlanPermissionId");
-
-                            b1.HasIndex("Code")
-                                .IsUnique();
-
-                            b1.ToTable("PlanPermission");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PlanPermissionId");
-                        });
-
-                    b.Navigation("Code")
-                        .IsRequired();
-
                     b.Navigation("Company");
-
-                    b.Navigation("Name")
-                        .IsRequired();
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.PlanPermissionRelation", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.PlanPermissionRelation", b =>
                 {
-                    b.HasOne("PlanManager.Domain.Entities.Plan.Plan", "Plan")
+                    b.HasOne("PlanManager.Domain.Entities.PlanManager.Plan", "Plan")
                         .WithMany("Permissions")
                         .HasForeignKey("IdPlan")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_PlanPermissionRelation_Plan_PlanId");
 
-                    b.HasOne("PlanManager.Domain.Entities.Plan.PlanPermission", "PlanPermission")
+                    b.HasOne("PlanManager.Domain.Entities.PlanManager.PlanPermission", "PlanPermission")
                         .WithMany("Plans")
                         .HasForeignKey("IdPlanPermission")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -555,18 +578,18 @@ namespace PlanManager.Infrastructure.Migrations
                     b.Navigation("PlanPermission");
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Sign", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Sign", b =>
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Company")
                         .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Plan.Sign", "IdCompany")
+                        .HasForeignKey("PlanManager.Domain.Entities.PlanManager.Sign", "IdCompany")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_Sign_Company");
 
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Customer")
                         .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Plan.Sign", "IdCustomer")
+                        .HasForeignKey("PlanManager.Domain.Entities.PlanManager.Sign", "IdCustomer")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_Sign_Customer");
@@ -588,194 +611,6 @@ namespace PlanManager.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Person", b =>
-                {
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Address", "Address", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("City")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("City");
-
-                            b1.Property<string>("Complement")
-                                .IsRequired()
-                                .HasMaxLength(150)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Complement");
-
-                            b1.Property<string>("Country")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Country");
-
-                            b1.Property<bool>("HasHouseNumber")
-                                .HasColumnType("bit")
-                                .HasColumnName("HasHouseNumber");
-
-                            b1.Property<string>("HouseNumber")
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("HouseNumber");
-
-                            b1.Property<string>("Neighboorhood")
-                                .IsRequired()
-                                .HasMaxLength(30)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Neighboorhood");
-
-                            b1.Property<string>("State")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("State");
-
-                            b1.Property<string>("Street")
-                                .IsRequired()
-                                .HasMaxLength(100)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Street");
-
-                            b1.Property<string>("Zipcode")
-                                .IsRequired()
-                                .HasMaxLength(8)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Zipcode");
-
-                            b1.HasKey("PersonId");
-
-                            b1.ToTable("Person");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Document", "Document", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Identification")
-                                .IsRequired()
-                                .HasMaxLength(14)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Document");
-
-                            b1.Property<string>("Type")
-                                .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Type");
-
-                            b1.HasKey("PersonId");
-
-                            b1.HasIndex("Identification")
-                                .IsUnique();
-
-                            b1.ToTable("Person");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Email", "Email", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("EmailAddress")
-                                .IsRequired()
-                                .HasMaxLength(100)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("EmailAddress");
-
-                            b1.HasKey("PersonId");
-
-                            b1.HasIndex("EmailAddress")
-                                .IsUnique();
-
-                            b1.ToTable("Person");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.FullName", "FullName", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("FirstName")
-                                .IsRequired()
-                                .HasMaxLength(30)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("FirstName");
-
-                            b1.Property<string>("LastName")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("LastName");
-
-                            b1.HasKey("PersonId");
-
-                            b1.ToTable("Person");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Phone", "Phone", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("CountryCode")
-                                .IsRequired()
-                                .HasMaxLength(6)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("CountryCode");
-
-                            b1.Property<string>("DDD")
-                                .IsRequired()
-                                .HasMaxLength(6)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("DDD");
-
-                            b1.Property<string>("NumberWithDigit")
-                                .IsRequired()
-                                .HasMaxLength(9)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("PhoneNumberWithDigit");
-
-                            b1.HasKey("PersonId");
-
-                            b1.ToTable("Person");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.Navigation("Address")
-                        .IsRequired();
-
-                    b.Navigation("Document")
-                        .IsRequired();
-
-                    b.Navigation("Email")
-                        .IsRequired();
-
-                    b.Navigation("FullName")
-                        .IsRequired();
-
-                    b.Navigation("Phone")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.User", b =>
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Person", "Person")
@@ -785,29 +620,7 @@ namespace PlanManager.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_User_Person");
 
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Username", "Username", b1 =>
-                        {
-                            b1.Property<string>("UserId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Username");
-
-                            b1.HasKey("UserId");
-
-                            b1.ToTable("User");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId");
-                        });
-
                     b.Navigation("Person");
-
-                    b.Navigation("Username")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.Utils.LogActivity", b =>
@@ -816,37 +629,15 @@ namespace PlanManager.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("FromUserId");
 
-                    b.OwnsOne("PlanManager.Domain.ValueObjects.Description", "Description", b1 =>
-                        {
-                            b1.Property<string>("LogActivityId")
-                                .HasColumnType("nvarchar(11)");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(150)
-                                .HasColumnType("nvarchar")
-                                .HasColumnName("Description");
-
-                            b1.HasKey("LogActivityId");
-
-                            b1.ToTable("LogActivity");
-
-                            b1.WithOwner()
-                                .HasForeignKey("LogActivityId");
-                        });
-
-                    b.Navigation("Description")
-                        .IsRequired();
-
                     b.Navigation("FromUser");
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.Plan", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Plan", b =>
                 {
                     b.Navigation("Permissions");
                 });
 
-            modelBuilder.Entity("PlanManager.Domain.Entities.Plan.PlanPermission", b =>
+            modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.PlanPermission", b =>
                 {
                     b.Navigation("Plans");
                 });

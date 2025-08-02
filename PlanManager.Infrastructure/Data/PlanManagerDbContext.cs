@@ -34,7 +34,6 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.ApplyConfiguration(new SignMap());
 		modelBuilder.ApplyConfiguration(new LicenseMap());
 
-
 		modelBuilder.Entity<Person>().Property(x => x.Status).HasConversion<string>();
 
 		modelBuilder.Entity<LogActivity>().Property(e => e.Type).HasConversion<string>();

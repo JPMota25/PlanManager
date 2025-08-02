@@ -13,7 +13,7 @@ public class PersonRepository : Repository<Person>, IPersonRepository {
 	}
 
 	public async Task<bool> ConfirmUniqueKey(string key) {
-		var persons = await _context.Persons.FirstOrDefaultAsync(x => x.Document.Identification == key || x.Email.EmailAddress == key);
+		var persons = await _context.Persons.FirstOrDefaultAsync(x => x.Document == key || x.Email == key);
 		return persons != null;
 	}
 }

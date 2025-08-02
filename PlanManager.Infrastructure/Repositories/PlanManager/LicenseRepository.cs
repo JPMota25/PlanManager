@@ -14,6 +14,6 @@ public class LicenseRepository : Repository<License>, ILicenseRepository {
 
 
 	public async Task<License?> GetLicense(License license) {
-		return await _context.Licenses.FirstOrDefaultAsync(x=>x.IdPlan == license.IdPlan && x.IdSign == license.IdSign);
+		return await _context.Licenses.FirstOrDefaultAsync(x => x.IdPlan == license.IdPlan && x.IdSign == license.IdSign);
 	}
 }

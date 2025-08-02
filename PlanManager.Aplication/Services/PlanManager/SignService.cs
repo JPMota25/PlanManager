@@ -4,8 +4,9 @@ using PlanManager.Domain.Repositories.PlanManager;
 
 namespace PlanManager.Aplication.Services.PlanManager;
 
-public class SignService : ISignService{
+public class SignService : ISignService {
 	private readonly ISignRepository _signRepository;
+
 	public SignService(ISignRepository signRepository) {
 		_signRepository = signRepository;
 	}
@@ -17,6 +18,5 @@ public class SignService : ISignService{
 
 	public async Task AddSign(Sign sign) {
 		await _signRepository.AddAsync(sign);
-		await _signRepository.SaveChangesAsync();
 	}
 }

@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="Commands\PlanManager\" />
+        <Folder Include="Commands\Profiles\Customer\" />
         <Folder Include="Exceptions\"/>
     </ItemGroup>
 

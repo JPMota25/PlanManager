@@ -1,27 +1,18 @@
 ﻿using Flunt.Notifications;
-using PlanManager.Domain.ValueObjects;
 
 namespace PlanManager.Domain.Entities;
 
 public class Entity : Notifiable<Notification> {
-	protected void NewId() {
-		Id = Id.New();
-	}
+	protected Entity() { }
 
-	protected void EmptyId() {
-		Id = Id.Empty;
-	}
-
-	protected void SetUpdatedAt() {
-		UpdatedAt = DateTime.UtcNow;
-	}
-
-	public Id Id { get; private set; }
+	public string Id { get; private set; }
 	public DateTime CreatedAt { get; private set; }
 	public DateTime? UpdatedAt { get; private set; }
 
-	protected Entity() {
-		Id = Id.New();
-		CreatedAt = DateTime.UtcNow;
+	protected Entity(bool initialize) {
+		if (initialize) {
+			Id = Guid.NewGuid().ToString().Replace("-", "")[..11];
+			CreatedAt = DateTime.UtcNow;
+		}
 	}
-};
+}

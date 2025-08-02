@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanManager.Domain.Repositories;
-using PlanManager.Domain.ValueObjects;
 using PlanManager.Infrastructure.Data;
 
 namespace PlanManager.Infrastructure.Repositories;
@@ -14,7 +13,7 @@ public class Repository<T> : IRepository<T> where T : class {
 		_dbSet = context.Set<T>();
 	}
 
-	public async Task<T?> GetByIdAsync(Id id) {
+	public async Task<T?> GetByIdAsync(string id) {
 		return await _dbSet.FindAsync(id);
 	}
 
@@ -30,7 +29,7 @@ public class Repository<T> : IRepository<T> where T : class {
 		_dbSet.Update(entity);
 	}
 
-	public async Task DeleteAsync(Id id) {
+	public async Task DeleteAsync(string id) {
 		var entity = await _dbSet.FindAsync(id);
 		if (entity != null) _dbSet.Remove(entity);
 	}

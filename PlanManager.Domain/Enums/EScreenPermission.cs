@@ -1,5 +1,3 @@
 ﻿namespace PlanManager.Domain.Enums;
 
-public enum EScreenPermission {
-	
-}
+public enum EScreenPermission { }
