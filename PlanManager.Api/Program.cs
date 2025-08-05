@@ -30,7 +30,6 @@ var app = builder.Build();
 LoadConfiguration(app);
 
 
-
 app.UseCors("MyCorsPolicy");
 if (app.Environment.IsDevelopment()) {
 	app.UseSwagger();
@@ -53,13 +52,12 @@ void ConfigureMvc(WebApplicationBuilder builderMvc) {
 
 void ConfigureServices(WebApplicationBuilder builderServices) {
 	builderServices.Services.AddCors(options => {
-		options.AddPolicy("MyCorsPolicy",
-			policy => {
-				policy.WithOrigins("http://localhost:5173");
-				policy.WithMethods("GET", "POST", "PUT", "DELETE");
-				policy.WithHeaders("Content-Type", "Authorization");
-				policy.AllowCredentials();
-			});
+		options.AddPolicy("MyCorsPolicy", policy => {
+			policy.WithOrigins("http://localhost:5173");
+			policy.WithMethods("GET", "POST", "PUT", "DELETE");
+			policy.WithHeaders("Content-Type", "Authorization");
+			policy.AllowCredentials();
+		});
 	});
 	builderServices.Services.AddEndpointsApiExplorer();
 	builderServices.Services.AddSwaggerGen();

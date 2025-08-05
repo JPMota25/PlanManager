@@ -4,6 +4,8 @@ using PlanManager.Aplication.DTOs.Request.Profiles;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
+using PlanManager.Domain.DTOs;
+using PlanManager.Domain.DTOs.Response;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.Profiles;
 
@@ -30,8 +32,8 @@ public class UserService : IUserService {
 		return !_passwordHashService.VerifyPassword(password, userDb.Password, userDb) ? null : userDb;
 	}
 
-	public async Task<LoginReportDto> GenerateLoginReport(LoginReportCommand loginReportCommand) {
-
-		return new LoginReportDto();
+	public async Task<IList<LoginReportDto>> GenerateLoginReport(LoginReportCommand loginReportCommand) {
+		return await _userRepository.LoginReport(loginReportCommand.Email, loginReportCommand.Document, loginReportCommand.InitialTime,
+			loginReportCommand.FinalTime, loginReportCommand.Skip, loginReportCommand.Take);
 	}
 }

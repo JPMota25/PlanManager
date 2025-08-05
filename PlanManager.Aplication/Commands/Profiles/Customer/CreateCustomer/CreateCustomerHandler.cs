@@ -24,7 +24,7 @@ public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, Resu
 	}
 
 	public async Task<ResultDto<PersonCreatedDto>> Handle(CreateCustomerCommand command, CancellationToken cancellationToken) {
-		Person request = command.Person;
+		var request = command.Person;
 		if (!request.IsValid)
 			return ResultDto<PersonCreatedDto>.Fail(command.Notifications);
 

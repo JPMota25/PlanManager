@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlanManager.Aplication.Commands.Profiles.User.ChangePassword;
 using PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 using PlanManager.Aplication.Commands.Profiles.User.Login;
+using PlanManager.Aplication.Commands.Profiles.User.LoginReport;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 
 namespace PlanManager.Api.Controllers;
@@ -37,6 +38,14 @@ public class UserController : ControllerBase {
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto request) {
 		var command = _mapper.Map<ChangePasswordCommand>(request);
+		var response = await _mediator.Send(command);
+		return Ok(response);
+	}
+
+	[HttpPost("api/v1/loginreport")]
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> LoginReport([FromBody] LoginReportQueryDto request) {
+		var command = _mapper.Map<LoginReportCommand>(request);
 		var response = await _mediator.Send(command);
 		return Ok(response);
 	}

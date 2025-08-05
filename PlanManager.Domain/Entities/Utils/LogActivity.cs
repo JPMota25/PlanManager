@@ -5,7 +5,6 @@ namespace PlanManager.Domain.Entities.Utils;
 
 public class LogActivity : Entity {
 	public string User { get; init; }
-	public User? FromUser { get; set; }
 	public ELogType Type { get; init; }
 	public EAction Action { get; init; }
 	public ELogCode Code { get; init; }

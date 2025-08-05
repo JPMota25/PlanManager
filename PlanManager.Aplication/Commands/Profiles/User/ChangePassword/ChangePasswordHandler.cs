@@ -34,7 +34,7 @@ public class ChangePasswordHandler : Notifiable<Notification>, IRequestHandler<C
 		if (username == null)
 			throw new InvalidOperationException("No username provided");
 
-		var user = await _userService.AuthenticateAndReturnUser( username, request.Password);
+		var user = await _userService.AuthenticateAndReturnUser(username, request.Password);
 		if (user == null)
 			return ResultDto<string>.Fail(new Notification("Password", "Incorrect password."));
 

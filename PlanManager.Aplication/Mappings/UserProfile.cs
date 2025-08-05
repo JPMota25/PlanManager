@@ -2,10 +2,11 @@
 using PlanManager.Aplication.Commands.Profiles.User.ChangePassword;
 using PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 using PlanManager.Aplication.Commands.Profiles.User.Login;
+using PlanManager.Aplication.Commands.Profiles.User.LoginReport;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 using PlanManager.Domain.Entities.Profiles;
 
-namespace PlanManager.Aplication.Mappins;
+namespace PlanManager.Aplication.Mappings;
 
 public class UserProfile : Profile {
 	public UserProfile() {
@@ -20,5 +21,10 @@ public class UserProfile : Profile {
 
 		CreateMap<ChangePasswordDto, ChangePasswordCommand>().ForMember(x => x.NewPassword, y => y.MapFrom(x => x.NewPassword))
 			.ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
+
+		CreateMap<LoginReportQueryDto, LoginReportCommand>().ForMember(x => x.Email, y => y.MapFrom(x => x.Email))
+			.ForMember(x => x.Document, y => y.MapFrom(x => x.Document)).ForMember(x => x.FinalTime, y => y.MapFrom(x => x.FinalTime))
+			.ForMember(x => x.InitialTime, y => y.MapFrom(x => x.InitialTime)).ForMember(x => x.Skip, y => y.MapFrom(x => x.Skip))
+			.ForMember(x => x.Take, y => y.MapFrom(x => x.Take));
 	}
 }

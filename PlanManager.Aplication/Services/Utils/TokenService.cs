@@ -15,6 +15,7 @@ public class TokenService : ITokenService {
 
 		var tokenDescriptor = new SecurityTokenDescriptor {
 			Subject = new ClaimsIdentity([
+				new Claim("UserId", user.Id),
 				new Claim(ClaimTypes.NameIdentifier, user.Username),
 				new Claim(ClaimTypes.Role, "Admin")
 			]),

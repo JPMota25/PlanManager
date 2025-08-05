@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanManager.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using PlanManager.Infrastructure.Data;
 namespace PlanManager.Infrastructure.Migrations
 {
     [DbContext(typeof(PlanManagerDbContext))]
-    partial class PlanManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250804175007_RemoveColumnFromUserIdFromLogActivity")]
+    partial class RemoveColumnFromUserIdFromLogActivity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -481,6 +484,9 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnType("nvarchar")
                         .HasColumnName("Description");
 
+                    b.Property<string>("FromUserId")
+                        .HasColumnType("nvarchar(11)");
+
                     b.Property<string>("ObjectId")
                         .IsRequired()
                         .HasMaxLength(11)
@@ -500,6 +506,8 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasColumnName("User");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FromUserId");
 
                     b.ToTable("LogActivity", (string)null);
                 });
@@ -613,6 +621,15 @@ namespace PlanManager.Infrastructure.Migrations
                         .HasConstraintName("FK_User_Person");
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("PlanManager.Domain.Entities.Utils.LogActivity", b =>
+                {
+                    b.HasOne("PlanManager.Domain.Entities.Profiles.User", "FromUser")
+                        .WithMany()
+                        .HasForeignKey("FromUserId");
+
+                    b.Navigation("FromUser");
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Plan", b =>

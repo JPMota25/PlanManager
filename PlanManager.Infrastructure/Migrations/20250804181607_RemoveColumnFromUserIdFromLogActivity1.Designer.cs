@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanManager.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using PlanManager.Infrastructure.Data;
 namespace PlanManager.Infrastructure.Migrations
 {
     [DbContext(typeof(PlanManagerDbContext))]
-    partial class PlanManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250804181607_RemoveColumnFromUserIdFromLogActivity1")]
+    partial class RemoveColumnFromUserIdFromLogActivity1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

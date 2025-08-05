@@ -8,7 +8,6 @@ public class LogActivityMap : IEntityTypeConfiguration<LogActivity> {
 	public void Configure(EntityTypeBuilder<LogActivity> builder) {
 		builder.ToTable("LogActivity");
 
-
 		builder.HasKey(x => x.Id);
 		builder.Property(x => x.Id).HasColumnName("Id").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 
@@ -25,5 +24,7 @@ public class LogActivityMap : IEntityTypeConfiguration<LogActivity> {
 		builder.Property(x => x.Description).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(150).IsRequired();
 
 		builder.Property(x => x.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime").IsRequired();
+
+		builder.Ignore("UpdatedAt");
 	}
 }

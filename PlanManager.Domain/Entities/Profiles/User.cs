@@ -6,6 +6,7 @@ public class User : Entity {
 	public void SetPassword(string password) {
 		Password = password;
 	}
+
 	public Person? Person { get; set; }
 	public string IdPerson { get; private set; }
 	public string Username { get; private set; }

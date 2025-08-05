@@ -23,7 +23,7 @@ public class CreateUserHandler : Notifiable<Notification>, IRequestHandler<Creat
 	}
 
 	public async Task<ResultDto<UserCreatedDto>> Handle(CreateUserCommand command, CancellationToken cancellationToken) {
-		Person request = command.Person;
+		var request = command.Person;
 		if (!request.IsValid)
 			return ResultDto<UserCreatedDto>.Fail(request.Notifications);
 
