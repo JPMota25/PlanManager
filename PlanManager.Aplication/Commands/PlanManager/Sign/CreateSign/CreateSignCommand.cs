@@ -6,7 +6,7 @@ using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.Enums;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreateSign;
+namespace PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
 
 public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<SignCreatedDto>>, ICommand {
 	public void Validate() {

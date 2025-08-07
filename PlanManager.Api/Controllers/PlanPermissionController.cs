@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlanManager.Aplication.Commands.PlanManager.CreatePlanPermission;
+using PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 using PlanManager.Aplication.DTOs.Request;
 using PlanManager.Aplication.DTOs.Request.PlanManager;
 

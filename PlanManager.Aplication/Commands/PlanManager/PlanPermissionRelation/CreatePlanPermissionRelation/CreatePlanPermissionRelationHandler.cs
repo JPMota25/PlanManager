@@ -3,11 +3,10 @@ using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Utils;
-using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreatePlanPermissionRelation;
+namespace PlanManager.Aplication.Commands.PlanManager.PlanPermissionRelation.CreatePlanPermissionRelation;
 
 public class CreatePlanPermissionRelationHandler : IRequestHandler<CreatePlanPermissionRelationCommand, ResultDto<PlanPermissionRelationCreatedDto>> {
 	private readonly IPlanPermissionRelationService _planPermissionRelationService;
@@ -25,7 +24,7 @@ public class CreatePlanPermissionRelationHandler : IRequestHandler<CreatePlanPer
 		if (!request.IsValid)
 			return ResultDto<PlanPermissionRelationCreatedDto>.Fail(request.Notifications);
 
-		var planPermissionRelation = new PlanPermissionRelation(request.IdPlanPermission, request.IdPlan);
+		var planPermissionRelation = new Domain.Entities.PlanManager.PlanPermissionRelation(request.IdPlanPermission, request.IdPlan);
 		if (await _planPermissionRelationService.VerifyPlanPermissionRelationIfExists(planPermissionRelation))
 			return ResultDto<PlanPermissionRelationCreatedDto>.Fail(planPermissionRelation.Notifications);
 

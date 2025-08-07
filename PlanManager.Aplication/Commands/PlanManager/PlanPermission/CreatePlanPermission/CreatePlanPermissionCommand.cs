@@ -5,7 +5,7 @@ using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Domain.Commands;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreatePlanPermission;
+namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 
 public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<ResultDto<PlanPermissionCreatedDto>>, ICommand {
 	public void Validate() {

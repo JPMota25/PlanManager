@@ -1,4 +1,4 @@
-﻿using PlanManager.Aplication.Commands.PlanManager.Plan.PlanQuery;
+﻿using PlanManager.Aplication.Commands.PlanManager.Plans.PlanQuery;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Domain.DTOs.Response;
 using PlanManager.Domain.Entities.PlanManager;

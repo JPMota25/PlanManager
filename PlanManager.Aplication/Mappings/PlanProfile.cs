@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using PlanManager.Aplication.Commands.PlanManager.Plan.PlanQuery;
+using PlanManager.Aplication.Commands.PlanManager.Plans.PlanQuery;
 using PlanManager.Aplication.DTOs.Request.PlanManager.Plan;
 
 namespace PlanManager.Aplication.Mappings;

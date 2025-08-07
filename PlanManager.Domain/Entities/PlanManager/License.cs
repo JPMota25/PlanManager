@@ -17,8 +17,16 @@ public class License : Entity {
 	}
 
 	private void Validate() {
-		var contract = new Contract<Notification>().Requires();
+		var contract = new Contract<Notification>().Requires()
+			.IsBetween(ProlongationInDays, 0, DateTime.DaysInMonth(Expire.GetValueOrDefault().Year, Expire.GetValueOrDefault().Month),
+				"ExpireDate.Prolongation").IsTrue(IsExpired(Expire, ProlongationInDays), "ExpireDate.Expired");
 		AddNotifications(contract);
+	}
+
+	private bool IsExpired(DateOnly? expire, int prolongationInDays) {
+		if (expire == null)
+			return true;
+		return !(expire.GetValueOrDefault().AddDays(prolongationInDays) < DateOnly.FromDateTime(DateTime.UtcNow));
 	}
 
 	public void ActivateLicense(int prolongationInDays) {
@@ -51,7 +59,7 @@ public class License : Entity {
 			case ELicenseType.Month:
 			case ELicenseType.Year:
 			case ELicenseType.Trial1Month:
-				if (Expire.Value.AddDays(ProlongationInDays) <= DateOnly.FromDateTime(DateTime.UtcNow))
+				if (Expire != null && Expire.Value.AddDays(ProlongationInDays) <= DateOnly.FromDateTime(DateTime.UtcNow))
 					SetStatus(ELicenseStatus.Expired);
 				break;
 			default:

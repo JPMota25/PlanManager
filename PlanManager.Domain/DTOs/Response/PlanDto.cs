@@ -8,6 +8,7 @@ public class PlanDto {
 
 public class ListPlanDto {
 	public IList<PlanDto> Plans { get; set; }
+
 	public ListPlanDto(IList<PlanDto> plans) {
 		Plans = plans;
 	}

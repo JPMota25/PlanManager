@@ -4,7 +4,7 @@ using PlanManager.Aplication.DTOs;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.DTOs.Response;
 
-namespace PlanManager.Aplication.Commands.PlanManager.Plan.PlanQuery;
+namespace PlanManager.Aplication.Commands.PlanManager.Plans.PlanQuery;
 
 public class PlanQueryCommand : Notifiable<Notification>, IRequest<ResultDto<ListPlanDto>>, ICommand {
 	public void Validate() {

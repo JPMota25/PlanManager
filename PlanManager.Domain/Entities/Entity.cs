@@ -3,6 +3,9 @@
 namespace PlanManager.Domain.Entities;
 
 public class Entity : Notifiable<Notification> {
+	public void SetUpdatedAt(DateTime updatedAt) {
+		UpdatedAt =  updatedAt;
+	}
 	protected Entity() { }
 
 	public string Id { get; private set; }

@@ -1,14 +1,14 @@
 ﻿using Flunt.Notifications;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.Plan;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreatePlan;
+namespace PlanManager.Aplication.Commands.PlanManager.Plans.CreatePlan;
 
 public class CreatePlanHandler : Notifiable<Notification>, IRequestHandler<CreatePlanCommand, ResultDto<PlanCreatedDto>> {
 	private readonly IPlanService _planService;

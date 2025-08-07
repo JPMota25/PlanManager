@@ -24,7 +24,7 @@ public class PlanRepository : Repository<Plan>, IPlanRepository {
 		if (!string.IsNullOrEmpty(name))
 			context = context.Where(x => x.Name == name);
 
-		return await context.Where(x => x.IdCompany == idCompany).Skip(skip).Take(take).Select(x=>new PlanDto {
+		return await context.Where(x => x.IdCompany == idCompany).Skip(skip).Take(take).Select(x => new PlanDto {
 			Id = x.Id,
 			Name = x.Name,
 			Value = x.Value

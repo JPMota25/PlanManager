@@ -1,4 +1,4 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager;
+﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager.Plan;
 
 public class CreatePlanDto {
 	public string Name { get; set; }

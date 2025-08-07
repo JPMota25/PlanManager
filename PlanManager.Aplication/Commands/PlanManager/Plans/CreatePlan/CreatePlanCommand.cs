@@ -2,10 +2,10 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.Plan;
 using ICommand = PlanManager.Domain.Commands.ICommand;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreatePlan;
+namespace PlanManager.Aplication.Commands.PlanManager.Plans.CreatePlan;
 
 public class CreatePlanCommand : Notifiable<Notification>, IRequest<ResultDto<PlanCreatedDto>>, ICommand {
 	public void Validate() {

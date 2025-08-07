@@ -5,11 +5,10 @@ using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
-using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreatePlanPermission;
+namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 
 public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHandler<CreatePlanPermissionCommand, ResultDto<PlanPermissionCreatedDto>> {
 	private readonly IPlanPermissionService _planPermissionService;
@@ -29,7 +28,7 @@ public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHan
 		if (!request.IsValid)
 			return ResultDto<PlanPermissionCreatedDto>.Fail(request.Notifications);
 
-		var planPermission = new PlanPermission(request.Name, request.IdCompany);
+		var planPermission = new Domain.Entities.PlanManager.PlanPermission(request.Name, request.IdCompany);
 		if (!await _planPermissionService.VerifyIfPlanPermissionIsUniqueByName(planPermission.Name))
 			return ResultDto<PlanPermissionCreatedDto>.Fail(new Notification("PlanPermission.IsUnique", "PlanPermission.Name already exists"));
 

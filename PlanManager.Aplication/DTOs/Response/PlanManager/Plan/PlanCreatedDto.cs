@@ -1,4 +1,4 @@
-﻿namespace PlanManager.Aplication.DTOs.Response;
+﻿namespace PlanManager.Aplication.DTOs.Response.PlanManager.Plan;
 
 public class PlanCreatedDto {
 	public string Id { get; set; }

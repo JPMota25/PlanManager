@@ -4,11 +4,10 @@ using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Utils;
-using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreateLicense;
+namespace PlanManager.Aplication.Commands.PlanManager.License.CreateLicense;
 
 public class CreateLicenseHandler : Notifiable<Notification>, IRequestHandler<CreateLicenseCommand, ResultDto<LicenseCreatedDto>> {
 	private readonly ILicenseService _licenseService;
@@ -24,7 +23,8 @@ public class CreateLicenseHandler : Notifiable<Notification>, IRequestHandler<Cr
 	public async Task<ResultDto<LicenseCreatedDto>> Handle(CreateLicenseCommand request, CancellationToken cancellationToken) {
 		if (!request.IsValid)
 			return ResultDto<LicenseCreatedDto>.Fail(request.Notifications);
-		var license = new License(request.IdSign, request.IdPlan, request.Type, request.Expire, request.ProlongationInDays, request.Value);
+		var license = new Domain.Entities.PlanManager.License(request.IdSign, request.IdPlan, request.Type, request.Expire, request.ProlongationInDays,
+			request.Value);
 		if (await _licenseService.VerifyIfLicenseExists(license))
 			return ResultDto<LicenseCreatedDto>.Fail(new Notification("License.Handler", "License is already created"));
 

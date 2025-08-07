@@ -7,10 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Commands\PlanManager\License\" />
-        <Folder Include="Commands\PlanManager\PlanPermissionRelation\" />
-        <Folder Include="Commands\PlanManager\PlanPermission\" />
-        <Folder Include="Commands\PlanManager\Sign\" />
+        <Folder Include="Commands\PlanManager\License\"/>
+        <Folder Include="Commands\PlanManager\PlanPermissionRelation\"/>
+        <Folder Include="Commands\PlanManager\PlanPermission\"/>
+        <Folder Include="Commands\PlanManager\Sign\"/>
         <Folder Include="Commands\Profiles\Customer\"/>
         <Folder Include="Exceptions\"/>
     </ItemGroup>

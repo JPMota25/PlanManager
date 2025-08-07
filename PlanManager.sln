@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanManager.Tests", "PlanMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanManager.Api", "PlanManager.Api\PlanManager.Api.csproj", "{EBB5BC43-68A3-4454-8ED7-C4854D8B7374}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanManager.HangFire", "PlanManager.HangFire\PlanManager.HangFire.csproj", "{653C454D-11D6-42E3-812B-F71A7F688005}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{EBB5BC43-68A3-4454-8ED7-C4854D8B7374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB5BC43-68A3-4454-8ED7-C4854D8B7374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB5BC43-68A3-4454-8ED7-C4854D8B7374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653C454D-11D6-42E3-812B-F71A7F688005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653C454D-11D6-42E3-812B-F71A7F688005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653C454D-11D6-42E3-812B-F71A7F688005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653C454D-11D6-42E3-812B-F71A7F688005}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlanManager.Aplication.Commands.PlanManager.CreateSign;
+using PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
 using PlanManager.Aplication.DTOs.Request.PlanManager;
 
 namespace PlanManager.Api.Controllers;

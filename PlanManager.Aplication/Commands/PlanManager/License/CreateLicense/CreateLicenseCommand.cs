@@ -5,7 +5,7 @@ using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.Enums;
 
-namespace PlanManager.Aplication.Commands.PlanManager.CreateLicense;
+namespace PlanManager.Aplication.Commands.PlanManager.License.CreateLicense;
 
 public class CreateLicenseCommand : Notifiable<Notification>, IRequest<ResultDto<LicenseCreatedDto>>, ICommand {
 	public void Validate() {

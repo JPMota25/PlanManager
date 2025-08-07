@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlanManager.Aplication.Commands.PlanManager.CreatePlan;
-using PlanManager.Aplication.Commands.PlanManager.Plan.PlanQuery;
-using PlanManager.Aplication.DTOs.Request;
-using PlanManager.Aplication.DTOs.Request.PlanManager;
+using PlanManager.Aplication.Commands.PlanManager.Plans.CreatePlan;
+using PlanManager.Aplication.Commands.PlanManager.Plans.PlanQuery;
 using PlanManager.Aplication.DTOs.Request.PlanManager.Plan;
 
 namespace PlanManager.Api.Controllers;
