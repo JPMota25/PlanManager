@@ -17,7 +17,7 @@ public class PlanPermissionMap : IEntityTypeConfiguration<PlanPermission> {
 		builder.Property(x => x.Code).HasColumnName("Code").HasColumnType("nvarchar").HasMaxLength(28).IsRequired();
 		builder.HasIndex(x => x.Code).IsUnique();
 
-		builder.Property(x => x.IdCompany).HasColumnName("IdCompany").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
+		builder.Property(x => x.IdCompany).HasColumnName("Company").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 		builder.HasOne(x => x.Company).WithMany().HasForeignKey(x => x.IdCompany).HasConstraintName("FK_PlanPermission_Company");
 
 		builder.Property(x => x.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").IsRequired();

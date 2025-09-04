@@ -8,7 +8,7 @@ using PlanManager.HangFire.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false);
+builder.Configuration.AddJsonFile(Path.Combine(builder.Environment.ContentRootPath, "appsettings.json"), optional: false);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 

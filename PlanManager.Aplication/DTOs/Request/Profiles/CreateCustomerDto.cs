@@ -2,8 +2,5 @@
 
 public class CreateCustomerDto {
 	public CreatePersonDto Person { get; set; }
-
-	public CreateCustomerDto(CreatePersonDto person) {
-		Person = person;
-	}
+    public string IdCompany { get; set; }
 }

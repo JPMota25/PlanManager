@@ -3,5 +3,5 @@
 namespace PlanManager.Domain.Repositories.Profiles;
 
 public interface IPersonRepository : IRepository<Person> {
-	Task<bool> ConfirmUniqueKey(string key);
+	Task<bool> VerifyPersonUniqueKeys(Person person);
 }

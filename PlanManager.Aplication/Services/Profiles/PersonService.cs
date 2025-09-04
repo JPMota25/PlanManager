@@ -11,8 +11,8 @@ public class PersonService : IPersonService {
 		_personRepository = personRepository;
 	}
 
-	public async Task<bool> VerifyPersonByDocument(string document) {
-		return await _personRepository.ConfirmUniqueKey(document);
+	public async Task<bool> VerifyPersonUniqueKeys(Person person) {
+		return await _personRepository.VerifyPersonUniqueKeys(person);
 	}
 
 	public async Task<Person?> GetById(string id) {

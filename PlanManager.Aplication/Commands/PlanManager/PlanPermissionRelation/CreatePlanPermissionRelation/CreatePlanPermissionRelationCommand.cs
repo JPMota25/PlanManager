@@ -13,12 +13,15 @@ public class CreatePlanPermissionRelationCommand : Notifiable<Notification>, IRe
 		AddNotifications(contract);
 	}
 
-	public CreatePlanPermissionRelationCommand(string idPlan, string idPlanPermission) {
-		IdPlan = idPlan;
-		IdPlanPermission = idPlanPermission;
-		Validate();
-	}
+    public CreatePlanPermissionRelationCommand(string idPlan, string idPlanPermission, string idCompany)
+    {
+        IdPlan = idPlan;
+        IdPlanPermission = idPlanPermission;
+        IdCompany = idCompany;
+        Validate();
+    }
 
-	public string IdPlan { get; private set; }
+    public string IdPlan { get; private set; }
 	public string IdPlanPermission { get; private set; }
+    public string IdCompany { get; private set; }
 }

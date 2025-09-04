@@ -24,20 +24,19 @@ public class CreateCustomerHandler : IRequestHandler<CreateCustomerCommand, Resu
 	}
 
 	public async Task<ResultDto<PersonCreatedDto>> Handle(CreateCustomerCommand command, CancellationToken cancellationToken) {
-		var request = command.Person;
-		if (!request.IsValid)
-			return ResultDto<PersonCreatedDto>.Fail(command.Notifications);
+		if (!command.Person.IsValid)
+			return ResultDto<PersonCreatedDto>.Fail(command.Person.Notifications);
 
-		var person = new Person(request.FirstName, request.LastName, request.Email, request.Document, request.Type, request.CountryCode, request.DDD,
-			request.NumberWithDigit, request.Neighboorhood, request.HouseNumber, request.HasHouseNumber, request.Complement, request.Street, request.City,
-			request.State, request.Country, request.Zipcode);
-		if (await _personService.VerifyPersonByDocument(person.Document)) {
+		Person person = new Person(command.Person.FirstName, command.Person.LastName, command.Person.Email, command.Person.Document, command.Person.Type, command.Person.CountryCode, command.Person.DDD,
+			command.Person.NumberWithDigit, command.Person.Neighboorhood, command.Person.HouseNumber, command.Person.HasHouseNumber, command.Person.Complement, command.Person.Street, command.Person.City,
+			command.Person.State, command.Person.Country, command.Person.Zipcode);
+		if (await _personService.VerifyPersonUniqueKeys(person)) {
 			person.AddNotification("Person.Create", "Person already exists");
 			return ResultDto<PersonCreatedDto>.Fail(person.Notifications);
 		}
 
-		var customer = new Domain.Entities.Profiles.Customer(person.Id);
-		if (await _customerService.VerifyIfCustomerExists(customer.IdPerson)) {
+		Domain.Entities.Profiles.Customer customer = new Domain.Entities.Profiles.Customer(person.Id, command.IdCompany);
+		if (await _customerService.VerifyIfCustomerExists(customer)) {
 			customer.AddNotification("Customer.Create", "Customer already exists");
 			return ResultDto<PersonCreatedDto>.Fail(customer.Notifications);
 		}

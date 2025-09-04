@@ -20,7 +20,7 @@ public class PlanPermission : Entity {
 
 	public string Name { get; private set; }
 	public string Code { get; private set; }
-	public Person? Company { get; set; }
+	public Company? Company { get; set; }
 	public string IdCompany { get; private set; }
 	public IList<PlanPermissionRelation> Plans { get; private set; } = new List<PlanPermissionRelation>();
 

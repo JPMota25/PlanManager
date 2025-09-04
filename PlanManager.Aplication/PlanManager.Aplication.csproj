@@ -7,25 +7,24 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Commands\PlanManager\License\"/>
-        <Folder Include="Commands\PlanManager\PlanPermissionRelation\"/>
-        <Folder Include="Commands\PlanManager\PlanPermission\"/>
-        <Folder Include="Commands\PlanManager\Sign\"/>
-        <Folder Include="Commands\Profiles\Customer\"/>
-        <Folder Include="Exceptions\"/>
+        <Folder Include="Commands\PlanManager\PlanPermissionRelation\" />
+        <Folder Include="Commands\PlanManager\PlanPermission\" />
+        <Folder Include="Commands\PlanManager\Sign\" />
+        <Folder Include="Commands\Profiles\Customer\" />
+        <Folder Include="Exceptions\" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PlanManager.Domain\PlanManager.Domain.csproj"/>
-        <ProjectReference Include="..\PlanManager.Infrastructure\PlanManager.Infrastructure.csproj"/>
+        <ProjectReference Include="..\PlanManager.Domain\PlanManager.Domain.csproj" />
+        <ProjectReference Include="..\PlanManager.Infrastructure\PlanManager.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" Version="12.0.1"/>
-        <PackageReference Include="MediatR" Version="13.0.0"/>
-        <PackageReference Include="MediatR.Contracts" Version="2.0.1"/>
-        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1"/>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="MediatR" Version="13.0.0" />
+        <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
     </ItemGroup>
 
 </Project>

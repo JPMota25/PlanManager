@@ -91,6 +91,7 @@ void ConfigureServices(WebApplicationBuilder builderServices) {
 	builderServices.Services.AddScoped<IPlanPermissionRelationService, PlanPermissionRelationService>();
 	builderServices.Services.AddScoped<ISignService, SignService>();
 	builderServices.Services.AddScoped<ILicenseService, LicenseService>();
+	builderServices.Services.AddScoped<ICompanyService, CompanyService>();
 
 	builderServices.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 	builderServices.Services.AddScoped<IPersonRepository, PersonRepository>();
@@ -102,6 +103,7 @@ void ConfigureServices(WebApplicationBuilder builderServices) {
 	builderServices.Services.AddScoped<IPlanPermissionRelationRepository, PlanPermissionRelationRepository>();
 	builderServices.Services.AddScoped<ISignRepository, SignRepository>();
 	builderServices.Services.AddScoped<ILicenseRepository, LicenseRepository>();
+	builderServices.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 	builderServices.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 }
 

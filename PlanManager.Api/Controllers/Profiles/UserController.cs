@@ -11,6 +11,7 @@ using PlanManager.Aplication.DTOs.Request.Profiles;
 namespace PlanManager.Api.Controllers;
 
 [ApiController]
+[Route("api/[controller]")]
 public class UserController : ControllerBase {
 	private readonly IMediator _mediator;
 	private readonly IMapper _mapper;
@@ -20,21 +21,21 @@ public class UserController : ControllerBase {
 		_mapper = mapper;
 	}
 
-	[HttpPost("api/v1/login")]
+	[HttpPost("v1/login")]
 	public async Task<IActionResult> Login([FromBody] LoginDto request) {
 		var command = _mapper.Map<LoginCommand>(request);
 		var response = await _mediator.Send(command);
 		return Ok(response);
 	}
 
-	[HttpPost("api/v1/register")]
+	[HttpPost("v1/register")]
 	public async Task<IActionResult> Register([FromBody] CreateUserDto request) {
 		var command = _mapper.Map<CreateUserCommand>(request);
 		var response = await _mediator.Send(command);
 		return Ok(response);
 	}
 
-	[HttpPost("api/v1/changepassword")]
+	[HttpPost("v1/changepassword")]
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto request) {
 		var command = _mapper.Map<ChangePasswordCommand>(request);
@@ -42,7 +43,7 @@ public class UserController : ControllerBase {
 		return Ok(response);
 	}
 
-	[HttpPost("api/v1/loginreport")]
+	[HttpPost("v1/loginreport")]
 	[Authorize(Roles = "Admin")]
 	public async Task<IActionResult> LoginReport([FromBody] LoginReportQueryDto request) {
 		var command = _mapper.Map<LoginReportCommand>(request);

@@ -12,8 +12,13 @@ public class CustomerRepository : Repository<Customer>, ICustomerRepository {
 		_context = context;
 	}
 
-	public async Task<bool> VerifyIfCustomerExists(string customerId) {
-		var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Id == customerId);
-		return customer != null;
+	public async Task<bool> VerifyIfCustomerExists(Customer customer) {
+		var customerDb = await _context.Customers.FirstOrDefaultAsync(x => x.Id == customer.Id && x.IdCompany == customer.IdCompany);
+		return customerDb != null;
 	}
+
+    public async Task<Customer?> GetCustomerByIdentification(string identification)
+    {
+        return await _context.Customers.FirstOrDefaultAsync(c=>c.Identification == identification);
+    }
 }

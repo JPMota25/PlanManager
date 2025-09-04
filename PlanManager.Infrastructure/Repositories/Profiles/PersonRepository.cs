@@ -12,8 +12,8 @@ public class PersonRepository : Repository<Person>, IPersonRepository {
 		_context = context;
 	}
 
-	public async Task<bool> ConfirmUniqueKey(string key) {
-		var persons = await _context.Persons.FirstOrDefaultAsync(x => x.Document == key || x.Email == key);
-		return persons != null;
+	public async Task<bool> VerifyPersonUniqueKeys(Person person) {
+		Person personDb = await _context.Persons.FirstOrDefaultAsync(x => x.Document == person.Document || x.Email == person.Email);
+		return personDb != null;
 	}
 }

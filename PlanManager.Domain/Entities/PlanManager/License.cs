@@ -5,9 +5,9 @@ using PlanManager.Domain.Enums;
 namespace PlanManager.Domain.Entities.PlanManager;
 
 public class License : Entity {
-	public License(string idSign, string idPlan, ELicenseType type, DateOnly? expire, int prolongationInDays, decimal value) : base(true) {
+	public License(string requestIdSign, string idSign, ELicenseType type, DateOnly? expire, int prolongationInDays,
+        decimal value) : base(true) {
 		IdSign = idSign;
-		IdPlan = idPlan;
 		Type = type;
 		Expire = expire;
 		ProlongationInDays = prolongationInDays;
@@ -94,8 +94,6 @@ public class License : Entity {
 
 	public string IdSign { get; private set; }
 	public Sign? Sign { get; set; }
-	public Plan? Plan { get; set; }
-	public string IdPlan { get; private set; }
 	public decimal Value { get; private set; }
 	public ELicenseType Type { get; private set; }
 	public DateOnly? Expire { get; private set; }

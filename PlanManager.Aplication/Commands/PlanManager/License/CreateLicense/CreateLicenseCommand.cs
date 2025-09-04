@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
@@ -8,9 +9,11 @@ using PlanManager.Domain.Enums;
 namespace PlanManager.Aplication.Commands.PlanManager.License.CreateLicense;
 
 public class CreateLicenseCommand : Notifiable<Notification>, IRequest<ResultDto<LicenseCreatedDto>>, ICommand {
-	public void Validate() {
-		throw new NotImplementedException();
-	}
+	public void Validate()
+    {
+        var contract = new Contract<Notification>().Requires();
+		AddNotifications(contract);
+    }
 
 	public CreateLicenseCommand(string idSign, string idPlan, decimal value, ELicenseType type, DateOnly? expire, int prolongationInDays) {
 		IdSign = idSign;

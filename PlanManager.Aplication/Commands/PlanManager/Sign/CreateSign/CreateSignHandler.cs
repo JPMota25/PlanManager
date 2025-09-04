@@ -23,7 +23,7 @@ public class CreateSignHandler : Notifiable<Notification>, IRequestHandler<Creat
 	public async Task<ResultDto<SignCreatedDto>> Handle(CreateSignCommand request, CancellationToken cancellationToken) {
 		if (!request.IsValid)
 			return ResultDto<SignCreatedDto>.Fail(request.Notifications);
-		var sign = new Domain.Entities.PlanManager.Sign(request.IdCustomer, request.IdCompany);
+		var sign = new Domain.Entities.PlanManager.Sign(request.IdCustomer, request.IdCompany, request.IdPlan);
 		if (await _signService.VerifyIfSignExists(sign))
 			return ResultDto<SignCreatedDto>.Fail(new Notification("Sign.Handler", "Sign already exists"));
 

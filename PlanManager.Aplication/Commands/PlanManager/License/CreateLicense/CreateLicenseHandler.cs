@@ -25,14 +25,14 @@ public class CreateLicenseHandler : Notifiable<Notification>, IRequestHandler<Cr
 			return ResultDto<LicenseCreatedDto>.Fail(request.Notifications);
 		var license = new Domain.Entities.PlanManager.License(request.IdSign, request.IdPlan, request.Type, request.Expire, request.ProlongationInDays,
 			request.Value);
-		if (await _licenseService.VerifyIfLicenseExists(license))
-			return ResultDto<LicenseCreatedDto>.Fail(new Notification("License.Handler", "License is already created"));
+		if (!await _licenseService.VerifyIfAlreadyHasActiveLicense(license.IdSign))
+			return ResultDto<LicenseCreatedDto>.Fail(new Notification("License.Handler", "Already has a Active license."));
 
 		await _licenseService.AddLicense(license);
 		await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreateLicense, license.Id, "License created successfully.");
 		await _unitOfWork.CommitAsync();
 
-		return ResultDto<LicenseCreatedDto>.Ok(new LicenseCreatedDto(license.Id, license.IdSign, license.IdPlan, license.Value, license.Type.ToString(),
+		return ResultDto<LicenseCreatedDto>.Ok(new LicenseCreatedDto(license.Id, license.IdSign, license.Value, license.Type.ToString(),
 			license.Status.ToString()));
 	}
 }

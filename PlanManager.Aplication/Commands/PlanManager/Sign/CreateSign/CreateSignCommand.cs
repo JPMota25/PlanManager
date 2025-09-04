@@ -14,14 +14,13 @@ public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<Si
 		AddNotifications(contract);
 	}
 
-	public CreateSignCommand(string idCustomer, string idCompany, ESignStatus status) {
+	public CreateSignCommand(string idCustomer, string idCompany) {
 		IdCustomer = idCustomer;
 		IdCompany = idCompany;
-		Status = status;
 		Validate();
 	}
 
 	public string IdCustomer { get; private set; }
 	public string IdCompany { get; private set; }
-	public ESignStatus Status { get; private set; }
+    public string IdPlan { get; private set; }
 }

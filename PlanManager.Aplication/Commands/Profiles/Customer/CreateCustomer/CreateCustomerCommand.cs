@@ -16,8 +16,10 @@ public class CreateCustomerCommand : Notifiable<Notification>, IRequest<ResultDt
 
 	public void Validate() {
 		var contract = new Contract<Notification>().Requires();
+        AddNotifications(Person.Notifications);
 		AddNotifications(contract);
 	}
 
 	public Person Person { get; private set; }
+    public string IdCompany { get; private set; }
 }

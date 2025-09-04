@@ -15,7 +15,12 @@ public class CustomerService : ICustomerService {
 		await _customerRepository.AddAsync(customer);
 	}
 
-	public async Task<bool> VerifyIfCustomerExists(string customerIdVo) {
-		return await _customerRepository.VerifyIfCustomerExists(customerIdVo);
+	public async Task<bool> VerifyIfCustomerExists(Customer customer) {
+		return await _customerRepository.VerifyIfCustomerExists(customer);
 	}
+
+    public async Task<Customer?> GetCustomerByIdentification(string identification)
+    {
+        return await _customerRepository.GetCustomerByIdentification(identification);
+    }
 }

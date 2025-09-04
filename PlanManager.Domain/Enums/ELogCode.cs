@@ -19,6 +19,7 @@ public enum ELogCode {
 	CreateSign = 15,
 	CreateLicense = 16,
 	PasswordUpdate = 17,
+	CreateCompany = 18,
 
 	// Errors
 	DuplicatePersonKeys = 1001,

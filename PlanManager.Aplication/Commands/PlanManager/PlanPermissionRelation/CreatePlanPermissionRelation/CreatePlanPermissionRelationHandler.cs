@@ -24,7 +24,7 @@ public class CreatePlanPermissionRelationHandler : IRequestHandler<CreatePlanPer
 		if (!request.IsValid)
 			return ResultDto<PlanPermissionRelationCreatedDto>.Fail(request.Notifications);
 
-		var planPermissionRelation = new Domain.Entities.PlanManager.PlanPermissionRelation(request.IdPlanPermission, request.IdPlan);
+		var planPermissionRelation = new Domain.Entities.PlanManager.PlanPermissionRelation(request.IdPlanPermission, request.IdPlan, request.IdCompany);
 		if (await _planPermissionRelationService.VerifyPlanPermissionRelationIfExists(planPermissionRelation))
 			return ResultDto<PlanPermissionRelationCreatedDto>.Fail(planPermissionRelation.Notifications);
 

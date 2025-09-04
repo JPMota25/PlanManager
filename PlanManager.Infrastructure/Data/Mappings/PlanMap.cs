@@ -12,8 +12,8 @@ public class PlanMap : IEntityTypeConfiguration<Plan> {
 		builder.Property(x => x.Id).HasColumnName("Id").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 		builder.HasKey(x => x.Id);
 
-		builder.Property(x => x.IdCompany).HasColumnName("IdCompany").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
-		builder.HasOne(x => x.Company).WithMany().HasForeignKey(x => x.IdCompany).HasConstraintName("FK_Plan_Person_PersonId").OnDelete(DeleteBehavior.Restrict)
+		builder.Property(x => x.IdCompany).HasColumnName("Company").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
+		builder.HasOne(x => x.Company).WithMany().HasForeignKey(x => x.IdCompany).HasConstraintName("FK_Plan_Company_IdCompany").OnDelete(DeleteBehavior.Restrict)
 			.IsRequired();
 
 		builder.Property(x => x.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(30).IsRequired();

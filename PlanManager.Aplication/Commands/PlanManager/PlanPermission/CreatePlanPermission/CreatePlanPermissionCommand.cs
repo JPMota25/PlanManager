@@ -13,7 +13,13 @@ public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<Re
 		AddNotifications(contract);
 	}
 
+    public CreatePlanPermissionCommand(string name, string idCompany)
+    {
+        Name = name;
+        IdCompany = idCompany;
+        Validate();
+    }
 
-	public string Name { get; private set; }
+    public string Name { get; private set; }
 	public string IdCompany { get; private set; }
 }

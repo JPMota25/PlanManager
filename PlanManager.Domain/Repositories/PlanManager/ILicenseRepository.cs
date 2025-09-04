@@ -3,5 +3,7 @@
 namespace PlanManager.Domain.Repositories.PlanManager;
 
 public interface ILicenseRepository : IRepository<License> {
-	Task<License?> GetLicense(License license);
+	Task<bool> VerifyIfAlreadyHasActiveLicense(string idSign);
+    Task<DateOnly?> GetActiveLicenseExpiration(string signIdentification);
+    Task<IList<License>> GetLicensesBySignIdentification(string signIdentification);
 }

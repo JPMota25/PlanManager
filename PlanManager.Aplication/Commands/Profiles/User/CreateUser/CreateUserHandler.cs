@@ -23,14 +23,14 @@ public class CreateUserHandler : Notifiable<Notification>, IRequestHandler<Creat
 	}
 
 	public async Task<ResultDto<UserCreatedDto>> Handle(CreateUserCommand command, CancellationToken cancellationToken) {
-		var request = command.Person;
+		Person request = command.Person;
 		if (!request.IsValid)
 			return ResultDto<UserCreatedDto>.Fail(request.Notifications);
 
-		var person = new Person(request.FirstName, request.LastName, request.Email, request.Document, request.Type, request.CountryCode, request.DDD,
+		Person person = new Person(request.FirstName, request.LastName, request.Email, request.Document, request.Type, request.CountryCode, request.DDD,
 			request.NumberWithDigit, request.Neighboorhood, request.HouseNumber, request.HasHouseNumber, request.Complement, request.Street, request.City,
 			request.State, request.Country, request.Zipcode);
-		if (!person.IsValid || await _personService.VerifyPersonByDocument(person.Document))
+		if (!person.IsValid || await _personService.VerifyPersonUniqueKeys(person))
 			return ResultDto<UserCreatedDto>.Fail(person.Notifications);
 
 		var user = new Domain.Entities.Profiles.User(person.Id, command.Username, _passwordHashService.HashPassword(command.Password));

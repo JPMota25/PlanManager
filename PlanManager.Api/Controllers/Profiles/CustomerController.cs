@@ -5,10 +5,10 @@ using PlanManager.Aplication.Commands.Profiles.Customer.CreateCustomer;
 using PlanManager.Aplication.DTOs.Request;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 
-namespace PlanManager.Api.Controllers;
+namespace PlanManager.Api.Controllers.Profiles;
 
 [ApiController]
-[Route("api")]
+[Route("api/[controller]")]
 public class CustomerController : ControllerBase {
 	private readonly IMediator _mediator;
 	private readonly IMapper _mapper;
@@ -18,7 +18,7 @@ public class CustomerController : ControllerBase {
 		_mapper = mapper;
 	}
 
-	[HttpPost("v1/customer")]
+	[HttpPost("v1/create")]
 	public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerDto request) {
 		var command = _mapper.Map<CreateCustomerCommand>(request);
 		var result = await _mediator.Send(command);

@@ -11,6 +11,7 @@ public class PlanManagerDbContext : DbContext {
 	public PlanManagerDbContext(DbContextOptions<PlanManagerDbContext> options) : base(options) { }
 
 	public DbSet<Person> Persons { get; set; }
+	public DbSet<Company> Companies { get; set; }
 	public DbSet<User> Users { get; set; }
 	public DbSet<Plan> Plans { get; set; }
 	public DbSet<PlanPermission> PlanPermissions { get; set; }
@@ -33,6 +34,7 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.ApplyConfiguration(new CustomerMap());
 		modelBuilder.ApplyConfiguration(new SignMap());
 		modelBuilder.ApplyConfiguration(new LicenseMap());
+		modelBuilder.ApplyConfiguration(new CompanyMap());
 
 		modelBuilder.Entity<Person>().Property(x => x.Status).HasConversion<string>();
 

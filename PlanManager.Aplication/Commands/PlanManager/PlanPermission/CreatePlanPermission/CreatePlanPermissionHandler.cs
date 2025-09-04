@@ -12,14 +12,14 @@ namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanP
 
 public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHandler<CreatePlanPermissionCommand, ResultDto<PlanPermissionCreatedDto>> {
 	private readonly IPlanPermissionService _planPermissionService;
-	private readonly IPersonService _personService;
+    private readonly ICompanyService _companyService;
 	private readonly ILogActivityService _logActivityService;
 	private readonly IUnitOfWork _unitOfWork;
 
-	public CreatePlanPermissionHandler(IPlanPermissionService planPermissionService, IPersonService personService, ILogActivityService logActivityService,
+	public CreatePlanPermissionHandler(IPlanPermissionService planPermissionService, ICompanyService companyService, ILogActivityService logActivityService,
 		IUnitOfWork unitOfWork) {
 		_planPermissionService = planPermissionService;
-		_personService = personService;
+        _companyService = companyService;
 		_logActivityService = logActivityService;
 		_unitOfWork = unitOfWork;
 	}
@@ -32,7 +32,7 @@ public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHan
 		if (!await _planPermissionService.VerifyIfPlanPermissionIsUniqueByName(planPermission.Name))
 			return ResultDto<PlanPermissionCreatedDto>.Fail(new Notification("PlanPermission.IsUnique", "PlanPermission.Name already exists"));
 
-		if (await _personService.GetById(planPermission.IdCompany) == null)
+		if (await _companyService.GetById(planPermission.IdCompany) == null)
 			return ResultDto<PlanPermissionCreatedDto>.Fail(new Notification("PlanPermission.CompanyId", "Company not found"));
 
 		await _planPermissionService.AddPlanPermission(planPermission);

@@ -6,7 +6,7 @@ using PlanManager.Aplication.Commands.Profiles.User.LoginReport;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 using PlanManager.Domain.Entities.Profiles;
 
-namespace PlanManager.Aplication.Mappings;
+namespace PlanManager.Aplication.Mappings.Profiles;
 
 public class UserProfile : Profile {
 	public UserProfile() {

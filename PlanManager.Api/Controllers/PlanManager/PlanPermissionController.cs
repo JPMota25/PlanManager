@@ -5,21 +5,21 @@ using PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermi
 using PlanManager.Aplication.DTOs.Request;
 using PlanManager.Aplication.DTOs.Request.PlanManager;
 
-namespace PlanManager.Api.Controllers;
+namespace PlanManager.Api.Controllers.PlanManager;
 
 [ApiController]
-[Route("api")]
-public class PlanPermissionRelationController : ControllerBase {
-	private readonly IMapper _mapper;
+[Route("api/[controller]")]
+public class PlanPermissionController : ControllerBase {
 	private readonly IMediator _mediator;
+	private readonly IMapper _mapper;
 
-	public PlanPermissionRelationController(IMapper mapper, IMediator mediator) {
-		_mapper = mapper;
+	public PlanPermissionController(IMediator mediator, IMapper mapper) {
 		_mediator = mediator;
+		_mapper = mapper;
 	}
 
-	[HttpPost("v1/PlanPermissionRelation")]
-	public async Task<IActionResult> AddPermissionOnPlan([FromBody] CreatePlanPermissionRelationDto request) {
+	[HttpPost("v1/create")]
+	public async Task<IActionResult> Create([FromBody] PlanPermissionDto request) {
 		var command = _mapper.Map<CreatePlanPermissionCommand>(request);
 		var result = await _mediator.Send(command);
 		return Ok(result);
