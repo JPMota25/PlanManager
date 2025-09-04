@@ -21,7 +21,7 @@ namespace PlanManager.Aplication.Commands.PlanManager.License.VerifyLicenseAuthe
         public GenerateLicenseCommand(string customerIdentification, string signIdentification)
         {
             SignIdentification = signIdentification;
-            CustomerIdentification = CustomerIdentification;
+            CustomerIdentification = customerIdentification;
         }
 
         public string CustomerIdentification { get; private set; }

@@ -44,8 +44,6 @@ public class SignService : ISignService {
             license.ValidateStatus();
             if (license.Status is ELicenseStatus.Expired or ELicenseStatus.Paused)
                 sign.SetStatus(ESignStatus.Inactive);
-            await AddSign(sign);
-            await _licenseRepository.AddAsync(license);
         }
     }
 

@@ -3,9 +3,11 @@ using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.PlanManager;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 
 namespace PlanManager.Aplication.Services.PlanManager;
 
@@ -21,8 +23,7 @@ public class LicenseService : ILicenseService {
 
     //true = exists, false = not exists
     public async Task<bool> VerifyIfAlreadyHasActiveLicense(string idSign) {
-		var result = await _licenseRepository.VerifyIfAlreadyHasActiveLicense(idSign);
-		return result != null;
+		return await _licenseRepository.VerifyIfAlreadyHasActiveLicense(idSign);
 	}
 
 	public async Task AddLicense(License license) {
@@ -33,15 +34,20 @@ public class LicenseService : ILicenseService {
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
-        var key = Encoding.ASCII.GetBytes(customer.Identification);
+        var key = Encoding.ASCII.GetBytes(customer.SecretToken);
+
+        DateOnly? licenseExpDb = await GetActiveLicenseExpiration(signIdentification);
+        string licenseExpString = (licenseExpDb != null ? licenseExpDb.ToString() : string.Empty)!;
+
+        var permissionsJson = JsonSerializer.Serialize(permissions);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity([
                 new Claim("CustomerIdentification", customer.Identification),
-                new Claim( "PlanPermissions", permissions.ToString()),
+                new Claim( "PlanPermissions", permissionsJson),
                 new Claim("PlanIdentification", await _signService.GetPlanIdentificationBySignIdentification(signIdentification)),
-                new Claim("LicenseExpiration", GetActiveLicenseExpiration(signIdentification).ToString())
+                new Claim("LicenseExpiration", licenseExpString)
             ]),
             Expires = DateTime.UtcNow.AddHours(360),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)

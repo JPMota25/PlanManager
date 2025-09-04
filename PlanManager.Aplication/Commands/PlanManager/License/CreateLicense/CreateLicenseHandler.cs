@@ -23,9 +23,9 @@ public class CreateLicenseHandler : Notifiable<Notification>, IRequestHandler<Cr
 	public async Task<ResultDto<LicenseCreatedDto>> Handle(CreateLicenseCommand request, CancellationToken cancellationToken) {
 		if (!request.IsValid)
 			return ResultDto<LicenseCreatedDto>.Fail(request.Notifications);
-		var license = new Domain.Entities.PlanManager.License(request.IdSign, request.IdPlan, request.Type, request.Expire, request.ProlongationInDays,
+		var license = new Domain.Entities.PlanManager.License(request.IdSign, request.Type, request.Expire, request.ProlongationInDays,
 			request.Value);
-		if (!await _licenseService.VerifyIfAlreadyHasActiveLicense(license.IdSign))
+		if (await _licenseService.VerifyIfAlreadyHasActiveLicense(license.IdSign))
 			return ResultDto<LicenseCreatedDto>.Fail(new Notification("License.Handler", "Already has a Active license."));
 
 		await _licenseService.AddLicense(license);

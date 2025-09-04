@@ -16,7 +16,7 @@ public class LicenseMap : IEntityTypeConfiguration<License> {
 
 		builder.Property(x => x.Status).HasColumnName("Status").HasColumnType("nvarchar").HasMaxLength(30).IsRequired();
 
-		builder.Property(x => x.Type).HasColumnName("Type").HasColumnType("nvarchar").IsRequired();
+		builder.Property(x => x.Type).HasColumnName("Type").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
 
 		builder.Property(x => x.Value).HasColumnName("Value").HasColumnType("decimal").IsRequired();
 

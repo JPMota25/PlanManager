@@ -5,7 +5,7 @@ using PlanManager.Domain.Enums;
 namespace PlanManager.Domain.Entities.PlanManager;
 
 public class License : Entity {
-	public License(string requestIdSign, string idSign, ELicenseType type, DateOnly? expire, int prolongationInDays,
+	public License(string idSign, ELicenseType type, DateOnly? expire, int prolongationInDays,
         decimal value) : base(true) {
 		IdSign = idSign;
 		Type = type;
