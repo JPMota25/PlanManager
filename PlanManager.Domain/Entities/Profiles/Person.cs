@@ -62,7 +62,7 @@ public class Person : Entity {
 	}
 
 	private static string RemoveSpecialCharacters(string removeSpecialCharacters) {
-		return removeSpecialCharacters.Replace("/", "").Replace(".", "").Replace("-", "").Replace(",", "").Replace(" ", "");
+		return removeSpecialCharacters.Replace("/", "").Replace(".", "").Replace("-", "").Replace(",", "").Replace(" ", "").Replace("+","").Replace("(","").Replace(")","");
 	}
 
 	public void SetPersonStatus(EPersonStatus status) {

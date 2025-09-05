@@ -11,6 +11,11 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\supor\.nuget\packages\flunt\2.0.5\lib\netstandard2.0\Flunt.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=35b6221e_002Dc927_002D43f9_002D891e_002D3d2274da879e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Constructor_WithValidData_ShouldBeValid_AndSanitizeFields" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.PersonTest.Constructor_WithValidData_ShouldBeValid_AndSanitizeFields&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=46c70876_002D52a6_002D46db_002Da8a8_002Dfe8ca3ace290/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldBeTrueWithAYearLicenseAndExpireDateValid #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\supor\Projects\PlanManager\PlanManager.Tests" Presentation="&amp;lt;PlanManager.Tests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
@@ -26,7 +31,7 @@
     &lt;ProjectFolder&gt;36AD62AC-067E-4266-809B-89D4C012AF57/d:ValueObjects&lt;/ProjectFolder&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ce08f211_002D47da_002D42ce_002D9b76_002D5b9e6d9e0e06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ce08f211_002D47da_002D42ce_002D9b76_002D5b9e6d9e0e06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UserTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.UserTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::36AD62AC-067E-4266-809B-89D4C012AF57::net10.0::PlanManager.Tests.Entities.Plan.LicenseTest.ShouldBeTrueWithAForeverLicenseAndExpireDateNull&lt;/TestId&gt;&#xD;

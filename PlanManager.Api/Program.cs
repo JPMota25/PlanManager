@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PlanManager.Api.Middlewares;
@@ -8,6 +9,7 @@ using PlanManager.Aplication;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
+using PlanManager.Aplication.Services;
 using PlanManager.Aplication.Services.PlanManager;
 using PlanManager.Aplication.Services.Profiles;
 using PlanManager.Aplication.Services.Utils;
@@ -39,6 +41,8 @@ if (app.Environment.IsDevelopment()) {
 app.UseMiddleware<ExceptionMiddleware>();
 // CreateSuperUser(app);
 app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
 
 return;
@@ -79,6 +83,10 @@ void ConfigureServices(WebApplicationBuilder builderServices) {
 	builderServices.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 	builderServices.Services.AddHttpContextAccessor();
+
+    builder.Services.AddAuthorization();
+    builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+    builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 	builderServices.Services.AddScoped<ILogActivityService, LogActivityService>();
 	builderServices.Services.AddScoped<IPasswordHashService, PasswordHashService>();

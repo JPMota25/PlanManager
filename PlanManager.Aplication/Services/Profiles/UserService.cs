@@ -36,4 +36,9 @@ public class UserService : IUserService {
 		return await _userRepository.LoginReport(loginReportCommand.Email, loginReportCommand.Document, loginReportCommand.InitialTime,
 			loginReportCommand.FinalTime, loginReportCommand.Skip, loginReportCommand.Take);
 	}
+
+    public async Task<IList<string>> PermissionsInUser(string idUser)
+    {
+        throw new NotImplementedException();
+    }
 }

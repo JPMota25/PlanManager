@@ -15,6 +15,11 @@ public class UserMap : IEntityTypeConfiguration<User> {
 		builder.Property(x => x.IdPerson).HasColumnName("IdPerson").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
 		builder.HasOne(x => x.Person).WithOne().HasForeignKey<User>(x => x.IdPerson).HasConstraintName("FK_User_Person").OnDelete(DeleteBehavior.Cascade);
 
+        builder.Property(x => x.IdGroupPermission).HasColumnName("GroupPermission").HasColumnType("nvarchar")
+            .HasMaxLength(11);
+        builder.HasOne(x => x.GroupPermission).WithMany().HasForeignKey(x => x.IdGroupPermission)
+            .HasConstraintName("FK_User_GroupPermission_IdGroupPermission").OnDelete(DeleteBehavior.Restrict);
+
 		builder.Property(x => x.Username).HasColumnName("Username").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
 		builder.Property(x => x.Password).HasColumnName("Password").HasColumnType("nvarchar").HasMaxLength(255).IsRequired();
 

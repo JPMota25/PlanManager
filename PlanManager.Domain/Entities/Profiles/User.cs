@@ -1,4 +1,5 @@
 ﻿using Flunt.Validations;
+using PlanManager.Domain.Entities.UserPermission;
 
 namespace PlanManager.Domain.Entities.Profiles;
 
@@ -11,6 +12,8 @@ public class User : Entity {
 	public string IdPerson { get; private set; }
 	public string Username { get; private set; }
 	public string Password { get; private set; }
+    public string? IdGroupPermission { get; private set; }
+    public GroupPermission? GroupPermission { get; set; }
 
 	public User() { }
 

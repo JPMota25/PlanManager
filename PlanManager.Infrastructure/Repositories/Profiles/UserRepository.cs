@@ -34,4 +34,9 @@ public class UserRepository : Repository<User>, IUserRepository {
 				LoggedAt = x.activity.CreatedAt
 			}).Skip(skip).Take(take).ToListAsync();
 	}
+
+    public async Task<IList<string>> GetUserPermissions(string idUser)
+    {
+        throw new NotImplementedException();
+    }
 }

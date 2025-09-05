@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Entities.Profiles;
+using PlanManager.Domain.Entities.UserPermission;
 using PlanManager.Domain.Entities.Utils;
 using PlanManager.Infrastructure.Data.Mappings;
 
@@ -22,6 +23,8 @@ public class PlanManagerDbContext : DbContext {
 
 	public DbSet<LogActivity> LogActivities { get; set; }
 
+    public DbSet<GroupPermission> GroupPermissions { get; set; }
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder) {
 		modelBuilder.Ignore<Notification>();
 
@@ -35,6 +38,7 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.ApplyConfiguration(new SignMap());
 		modelBuilder.ApplyConfiguration(new LicenseMap());
 		modelBuilder.ApplyConfiguration(new CompanyMap());
+		modelBuilder.ApplyConfiguration(new GroupPermissionMap());
 
 		modelBuilder.Entity<Person>().Property(x => x.Status).HasConversion<string>();
 
@@ -43,6 +47,8 @@ public class PlanManagerDbContext : DbContext {
 		modelBuilder.Entity<LogActivity>().Property(e => e.Code).HasConversion<string>();
 
 		modelBuilder.Entity<Sign>().Property(e => e.Status).HasConversion<string>();
+
+		modelBuilder.Entity<GroupPermission>().Property(e => e.IsActive).HasConversion<string>();
 
 		modelBuilder.Entity<License>().Property(e => e.Status).HasConversion<string>();
 		modelBuilder.Entity<License>().Property(e => e.Type).HasConversion<string>();
