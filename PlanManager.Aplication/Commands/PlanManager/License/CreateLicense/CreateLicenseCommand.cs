@@ -2,13 +2,13 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.License;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.Enums;
 
 namespace PlanManager.Aplication.Commands.PlanManager.License.CreateLicense;
 
-public class CreateLicenseCommand : Notifiable<Notification>, IRequest<ResultDto<LicenseCreatedDto>>, ICommand
+public class CreateLicenseCommand : Notifiable<Notification>, IRequest<ResultDto<ResponseLicenseCreated>>, ICommand
 {
     public void Validate()
     {

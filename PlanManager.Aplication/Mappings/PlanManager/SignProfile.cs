@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
-using PlanManager.Aplication.DTOs.Request.PlanManager;
+using PlanManager.Aplication.DTOs.Request.PlanManager.Sign;
 
 namespace PlanManager.Aplication.Mappings.PlanManager
 {
@@ -8,7 +8,7 @@ namespace PlanManager.Aplication.Mappings.PlanManager
     {
         public SignProfile()
         {
-            CreateMap<CreateSignDto, CreateSignCommand>()
+            CreateMap<RequestCreateSign, CreateSignCommand>()
                 .ConstructUsing(src => new CreateSignCommand(
                     src.IdCustomer,
                     src.IdCompany

@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
-using PlanManager.Aplication.DTOs.Request.PlanManager;
+using PlanManager.Aplication.DTOs.Request.PlanManager.Sign;
 
 namespace PlanManager.Api.Controllers.PlanManager;
 
@@ -20,7 +20,7 @@ public class SignController : ControllerBase
     }
 
     [HttpPost("v1/create")]
-    public async Task<IActionResult> Create([FromBody] CreateSignDto request)
+    public async Task<IActionResult> Create([FromBody] RequestCreateSign request)
     {
         var command = _mapper.Map<CreateSignCommand>(request);
         var result = await _mediator.Send(command);

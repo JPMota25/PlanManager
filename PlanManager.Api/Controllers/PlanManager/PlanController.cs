@@ -21,7 +21,7 @@ public class PlanController : ControllerBase
     }
 
     [HttpPost("v1/create")]
-    public async Task<IActionResult> Create([FromBody] CreatePlanDto request)
+    public async Task<IActionResult> Create([FromBody] RequestCreatePlan request)
     {
         var command = _mapper.Map<CreatePlanCommand>(request);
         var result = await _mediator.Send(command);
@@ -29,7 +29,7 @@ public class PlanController : ControllerBase
     }
 
     [HttpPost("v1/list")]
-    public async Task<IActionResult> List([FromBody] PlanQueryDto request)
+    public async Task<IActionResult> List([FromBody] RequestPlanReport request)
     {
         var command = _mapper.Map<PlanQueryCommand>(request);
         var response = await _mediator.Send(command);

@@ -1,8 +1,8 @@
 ﻿using PlanManager.Domain.Enums;
 
-namespace PlanManager.Aplication.DTOs.Request.Profiles;
+namespace PlanManager.Aplication.DTOs.Request.Profiles.Person;
 
-public class CreatePersonDto
+public class RequestCreatePerson
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -22,7 +22,7 @@ public class CreatePersonDto
     public string Country { get; set; }
     public string Zipcode { get; set; }
 
-    public CreatePersonDto(string firstName, string lastName, string email, string document, EDocumentType type, string countryCode, string ddd,
+    public RequestCreatePerson(string firstName, string lastName, string email, string document, EDocumentType type, string countryCode, string ddd,
         string numberWithDigit, string neighboorhood, string? houseNumber, bool hasHouseNumber, string complement, string street, string city, string state,
         string country, string zipcode)
     {

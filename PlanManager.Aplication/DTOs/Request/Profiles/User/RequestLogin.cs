@@ -1,11 +1,11 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.Profiles;
+﻿namespace PlanManager.Aplication.DTOs.Request.Profiles.User;
 
-public class LoginDto
+public class RequestLogin
 {
     public string Username { get; set; }
     public string Password { get; set; }
 
-    public LoginDto(string username, string password)
+    public RequestLogin(string username, string password)
     {
         Username = username;
         Password = password;

@@ -2,13 +2,13 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response.Company;
+using PlanManager.Aplication.DTOs.Response.Profiles.Company;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Commands.Profiles.Company.CreateCompany
 {
-    public class CreateCompanyCommand : Notifiable<Notification>, ICommand, IRequest<ResultDto<CompanyCreatedDto>>
+    public class CreateCompanyCommand : Notifiable<Notification>, ICommand, IRequest<ResultDto<ResponseCompanyCreated>>
     {
         public void Validate()
         {

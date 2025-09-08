@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="DTOs\Request\PlanManager\License\LicenseJwtDto.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Folder Include="Commands\PlanManager\PlanPermissionRelation\" />
         <Folder Include="Commands\PlanManager\PlanPermission\" />
         <Folder Include="Commands\PlanManager\Sign\" />

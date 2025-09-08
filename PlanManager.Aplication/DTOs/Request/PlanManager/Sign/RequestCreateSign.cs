@@ -1,6 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager;
+﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager.Sign;
 
-public class CreateSignDto
+public class RequestCreateSign
 {
     public string IdCustomer { get; set; }
     public string IdCompany { get; set; }

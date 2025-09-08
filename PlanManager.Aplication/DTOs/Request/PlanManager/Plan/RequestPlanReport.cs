@@ -1,6 +1,6 @@
 ﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager.Plan;
 
-public class PlanQueryDto
+public class RequestPlanReport
 {
     public string? Id { get; set; }
     public string? Name { get; set; }

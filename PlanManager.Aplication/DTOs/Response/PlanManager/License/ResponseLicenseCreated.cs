@@ -1,6 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Response;
+﻿namespace PlanManager.Aplication.DTOs.Response.PlanManager.License;
 
-public class LicenseCreatedDto
+public class ResponseLicenseCreated
 {
     public string Id { get; set; }
     public string IdSign { get; set; }
@@ -8,7 +8,7 @@ public class LicenseCreatedDto
     public string Type { get; set; }
     public string Status { get; set; }
 
-    public LicenseCreatedDto(string id, string idSign, decimal value, string type, string status)
+    public ResponseLicenseCreated(string id, string idSign, decimal value, string type, string status)
     {
         Id = id;
         IdSign = idSign;

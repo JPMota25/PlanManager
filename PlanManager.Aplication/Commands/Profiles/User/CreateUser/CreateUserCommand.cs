@@ -2,13 +2,13 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.Profiles.User;
 using PlanManager.Domain.Commands;
 using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 
-public class CreateUserCommand : Notifiable<Notification>, IRequest<ResultDto<UserCreatedDto>>, ICommand
+public class CreateUserCommand : Notifiable<Notification>, IRequest<ResultDto<ResponseUserCreated>>, ICommand
 {
     public void Validate()
     {

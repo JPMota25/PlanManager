@@ -1,6 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager;
+﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager.PlanPermissionRelation;
 
-public class CreatePlanPermissionRelationDto
+public class RequestCreatePlanPermissionRelation
 {
     public string IdPlan { get; set; }
     public string IdPlanPermission { get; set; }

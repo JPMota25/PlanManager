@@ -1,6 +1,6 @@
 ﻿namespace PlanManager.Aplication.DTOs.Request.PlanManager.Plan;
 
-public class CreatePlanDto
+public class RequestCreatePlan
 {
     public string Name { get; set; }
     public decimal Value { get; set; }

@@ -1,7 +1,9 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.Profiles.Company
+﻿using PlanManager.Aplication.DTOs.Request.Profiles.Person;
+
+namespace PlanManager.Aplication.DTOs.Request.Profiles.Company
 {
     public class CreateCompanyDto
     {
-        public CreatePersonDto Person { get; set; }
+        public RequestCreatePerson Person { get; set; }
     }
 }

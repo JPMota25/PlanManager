@@ -2,12 +2,12 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.PlanPermission;
 using PlanManager.Domain.Commands;
 
 namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 
-public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<ResultDto<PlanPermissionCreatedDto>>, ICommand
+public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<ResultDto<ResponsePlanPermissionCreated>>, ICommand
 {
     public void Validate()
     {

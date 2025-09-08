@@ -1,13 +1,13 @@
-﻿namespace PlanManager.Aplication.DTOs.Response;
+﻿namespace PlanManager.Aplication.DTOs.Response.PlanManager.PlanPermissionRelation;
 
-public class PlanPermissionRelationCreatedDto
+public class ResponsePlanPermissionRelationCreated
 {
     public string Id { get; set; }
     public string Plan { get; set; }
     public string PlanPermission { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public PlanPermissionRelationCreatedDto(string id, string plan, string planPermission, DateTime createdAt)
+    public ResponsePlanPermissionRelationCreated(string id, string plan, string planPermission, DateTime createdAt)
     {
         Id = id;
         Plan = plan;

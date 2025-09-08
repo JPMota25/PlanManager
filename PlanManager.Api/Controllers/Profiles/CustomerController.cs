@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PlanManager.Aplication.Commands.Profiles.Customer.CreateCustomer;
-using PlanManager.Aplication.DTOs.Request.Profiles;
+using PlanManager.Aplication.DTOs.Request.Profiles.Customer;
 using PlanManager.Shared.Authorization;
 
 namespace PlanManager.Api.Controllers.Profiles;
@@ -22,7 +22,7 @@ public class CustomerController : ControllerBase
 
     [Permission($"{Permissions.PlanManager.Profiles.Customer.Create}")]
     [HttpPost("v1/create")]
-    public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerDto request)
+    public async Task<IActionResult> CreateCustomer([FromBody] RequestCreateCustomer request)
     {
         var command = _mapper.Map<CreateCustomerCommand>(request);
         var result = await _mediator.Send(command);

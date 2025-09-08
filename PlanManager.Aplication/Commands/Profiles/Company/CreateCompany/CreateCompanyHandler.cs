@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response.Company;
+using PlanManager.Aplication.DTOs.Response.Profiles.Company;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
 using PlanManager.Domain.Entities.Profiles;
@@ -10,7 +10,7 @@ using PlanManager.Domain.Repositories;
 
 namespace PlanManager.Aplication.Commands.Profiles.Company.CreateCompany
 {
-    public class CreateCompanyHandler : Notifiable<Notification>, IRequestHandler<CreateCompanyCommand, ResultDto<CompanyCreatedDto>>
+    public class CreateCompanyHandler : Notifiable<Notification>, IRequestHandler<CreateCompanyCommand, ResultDto<ResponseCompanyCreated>>
     {
         private readonly ICompanyService _companyService;
         private readonly ILogActivityService _logActivityService;
@@ -25,11 +25,11 @@ namespace PlanManager.Aplication.Commands.Profiles.Company.CreateCompany
             _personService = personService;
         }
 
-        public async Task<ResultDto<CompanyCreatedDto>> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
+        public async Task<ResultDto<ResponseCompanyCreated>> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             Person person = request.Person;
             if (!person.IsValid)
-                return ResultDto<CompanyCreatedDto>.Fail(new Notification("Person.Invalid", "Person used to create company is invalid"));
+                return ResultDto<ResponseCompanyCreated>.Fail(new Notification("Person.Invalid", "Person used to create company is invalid"));
 
             var company = new Domain.Entities.Profiles.Company(person.Id);
 
@@ -38,7 +38,7 @@ namespace PlanManager.Aplication.Commands.Profiles.Company.CreateCompany
             await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreateCompany, company.Id,
                 "Company Created Successfully.");
             await _unitOfWork.CommitAsync();
-            return ResultDto<CompanyCreatedDto>.Ok(new CompanyCreatedDto());
+            return ResultDto<ResponseCompanyCreated>.Ok(new ResponseCompanyCreated());
         }
     }
 }

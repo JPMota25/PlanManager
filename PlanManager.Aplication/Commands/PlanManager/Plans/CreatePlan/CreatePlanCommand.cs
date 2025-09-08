@@ -7,7 +7,7 @@ using ICommand = PlanManager.Domain.Commands.ICommand;
 
 namespace PlanManager.Aplication.Commands.PlanManager.Plans.CreatePlan;
 
-public class CreatePlanCommand : Notifiable<Notification>, IRequest<ResultDto<PlanCreatedDto>>, ICommand
+public class CreatePlanCommand : Notifiable<Notification>, IRequest<ResultDto<ResponsePlanCreated>>, ICommand
 {
     public void Validate()
     {

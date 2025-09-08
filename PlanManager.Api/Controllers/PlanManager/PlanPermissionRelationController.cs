@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PlanManager.Aplication.Commands.PlanManager.PlanPermissionRelation.CreatePlanPermissionRelation;
-using PlanManager.Aplication.DTOs.Request.PlanManager;
+using PlanManager.Aplication.DTOs.Request.PlanManager.PlanPermissionRelation;
 
 namespace PlanManager.Api.Controllers.PlanManager;
 
@@ -20,7 +20,7 @@ public class PlanPermissionRelationController : ControllerBase
     }
 
     [HttpPost("v1/create")]
-    public async Task<IActionResult> AddPermissionOnPlan([FromBody] CreatePlanPermissionRelationDto request)
+    public async Task<IActionResult> AddPermissionOnPlan([FromBody] RequestCreatePlanPermissionRelation request)
     {
         var command = _mapper.Map<CreatePlanPermissionRelationCommand>(request);
         var result = await _mediator.Send(command);

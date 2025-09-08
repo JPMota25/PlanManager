@@ -2,12 +2,12 @@
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.Sign;
 using PlanManager.Domain.Commands;
 
 namespace PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
 
-public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<SignCreatedDto>>, ICommand
+public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<ResponseSignCreated>>, ICommand
 {
     public void Validate()
     {

@@ -14,7 +14,7 @@ namespace PlanManager.Aplication.Mappings.PlanManager
                 .ForMember(dest => dest.CustomerIdentification, sender => sender.MapFrom(dest => dest.CustomerIdentification))
                 .ForMember(dest => dest.SignIdentification, sender => sender.MapFrom(dest => dest.SignIdentification));
 
-            CreateMap<CreateLicenseDto, CreateLicenseCommand>()
+            CreateMap<RequestCreateLicense, CreateLicenseCommand>()
                 .ConstructUsing(src => new CreateLicenseCommand(
                     src.IdSign,
                     src.IdPlan,

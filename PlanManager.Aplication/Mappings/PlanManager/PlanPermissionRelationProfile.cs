@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PlanManager.Aplication.Commands.PlanManager.PlanPermissionRelation.CreatePlanPermissionRelation;
-using PlanManager.Aplication.DTOs.Request.PlanManager;
+using PlanManager.Aplication.DTOs.Request.PlanManager.PlanPermissionRelation;
 
 namespace PlanManager.Aplication.Mappings.PlanManager
 {
@@ -8,7 +8,7 @@ namespace PlanManager.Aplication.Mappings.PlanManager
     {
         public PlanPermissionRelationProfile()
         {
-            CreateMap<CreatePlanPermissionRelationDto, CreatePlanPermissionRelationCommand>()
+            CreateMap<RequestCreatePlanPermissionRelation, CreatePlanPermissionRelationCommand>()
                 .ConstructUsing(src => new CreatePlanPermissionRelationCommand(
                     src.IdPlan,
                     src.IdPlanPermission,

@@ -22,7 +22,7 @@ public class LicenseController : ControllerBase
     }
 
     [HttpPost("v1/create")]
-    public async Task<IActionResult> Create([FromBody] CreateLicenseDto request)
+    public async Task<IActionResult> Create([FromBody] RequestCreateLicense request)
     {
         var command = _mapper.Map<CreateLicenseCommand>(request);
         var result = await _mediator.Send(command);

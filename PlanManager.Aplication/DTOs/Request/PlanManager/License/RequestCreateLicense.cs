@@ -2,7 +2,7 @@
 
 namespace PlanManager.Aplication.DTOs.Request.PlanManager;
 
-public class CreateLicenseDto
+public class RequestCreateLicense
 {
     public string IdSign { get; set; }
     public string IdPlan { get; set; }

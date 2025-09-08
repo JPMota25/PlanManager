@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using MediatR;
 using PlanManager.Aplication.DTOs;
-using PlanManager.Aplication.DTOs.Response;
+using PlanManager.Aplication.DTOs.Response.PlanManager.PlanPermission;
 using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Aplication.Interfaces.Profiles;
 using PlanManager.Aplication.Interfaces.Utils;
@@ -10,7 +10,7 @@ using PlanManager.Domain.Repositories;
 
 namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 
-public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHandler<CreatePlanPermissionCommand, ResultDto<PlanPermissionCreatedDto>>
+public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHandler<CreatePlanPermissionCommand, ResultDto<ResponsePlanPermissionCreated>>
 {
     private readonly IPlanPermissionService _planPermissionService;
     private readonly ICompanyService _companyService;
@@ -26,23 +26,23 @@ public class CreatePlanPermissionHandler : Notifiable<Notification>, IRequestHan
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<ResultDto<PlanPermissionCreatedDto>> Handle(CreatePlanPermissionCommand request, CancellationToken cancellationToken)
+    public async Task<ResultDto<ResponsePlanPermissionCreated>> Handle(CreatePlanPermissionCommand request, CancellationToken cancellationToken)
     {
         if (!request.IsValid)
-            return ResultDto<PlanPermissionCreatedDto>.Fail(request.Notifications);
+            return ResultDto<ResponsePlanPermissionCreated>.Fail(request.Notifications);
 
         var planPermission = new Domain.Entities.PlanManager.PlanPermission(request.Name, request.IdCompany);
         if (!await _planPermissionService.VerifyIfPlanPermissionIsUniqueByName(planPermission.Name))
-            return ResultDto<PlanPermissionCreatedDto>.Fail(new Notification("PlanPermission.IsUnique", "PlanPermission.Name already exists"));
+            return ResultDto<ResponsePlanPermissionCreated>.Fail(new Notification("PlanPermission.IsUnique", "PlanPermission.Name already exists"));
 
         if (await _companyService.GetById(planPermission.IdCompany) == null)
-            return ResultDto<PlanPermissionCreatedDto>.Fail(new Notification("PlanPermission.CompanyId", "Company not found"));
+            return ResultDto<ResponsePlanPermissionCreated>.Fail(new Notification("PlanPermission.CompanyId", "Company not found"));
 
         await _planPermissionService.AddPlanPermission(planPermission);
         await _logActivityService.CreateLog(ELogType.Success, EAction.Created, ELogCode.CreatePlanPermission, planPermission.Id,
             "Creation of a new Plan permission");
         await _unitOfWork.CommitAsync();
 
-        return ResultDto<PlanPermissionCreatedDto>.Ok(new PlanPermissionCreatedDto(planPermission.Name, planPermission.Code));
+        return ResultDto<ResponsePlanPermissionCreated>.Ok(new ResponsePlanPermissionCreated(planPermission.Name, planPermission.Code));
     }
 }

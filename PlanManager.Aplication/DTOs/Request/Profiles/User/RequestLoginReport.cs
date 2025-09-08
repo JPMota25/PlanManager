@@ -1,6 +1,6 @@
-﻿namespace PlanManager.Aplication.DTOs.Request.Profiles;
+﻿namespace PlanManager.Aplication.DTOs.Request.Profiles.User;
 
-public class LoginReportQueryDto
+public class RequestLoginReport
 {
     public string? Email { get; set; }
     public string? Document { get; set; }
