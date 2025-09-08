@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PlanManager.Domain.Entities.Profiles;
 
@@ -16,7 +13,7 @@ namespace PlanManager.Infrastructure.Data.Mappings
             builder.Property(x => x.Id).HasColumnName("Id").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
             builder.HasKey(x => x.Id);
 
-            builder.Property(x=>x.IdPerson).HasColumnName("Person").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
+            builder.Property(x => x.IdPerson).HasColumnName("Person").HasColumnType("nvarchar").HasMaxLength(11).IsRequired();
             builder.HasOne(x => x.Person).WithOne().HasForeignKey<Company>(x => x.IdPerson)
                 .HasConstraintName("FK_Company_Person_IdPerson").OnDelete(DeleteBehavior.Restrict);
 

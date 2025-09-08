@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Flunt.Validations;
 using MediatR;
 using PlanManager.Aplication.DTOs;
@@ -11,7 +8,7 @@ using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Commands.Profiles.Company.CreateCompany
 {
-    public class CreateCompanyCommand : Notifiable<Notification>, ICommand , IRequest<ResultDto<CompanyCreatedDto>>
+    public class CreateCompanyCommand : Notifiable<Notification>, ICommand, IRequest<ResultDto<CompanyCreatedDto>>
     {
         public void Validate()
         {

@@ -11,11 +11,11 @@ public sealed class PermissionHandler : AuthorizationHandler<PermissionRequireme
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext ctx, PermissionRequirement req)
     {
-        var perms = ctx.User?.FindAll("perm").Select(c => c.Value).ToHashSet(StringComparer.OrdinalIgnoreCase)
+        var perms = ctx.User?.FindAll("action").Select(c => c.Value).ToHashSet(StringComparer.OrdinalIgnoreCase)
                     ?? new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         // Se vier em um único claim "perms" como JSON array
-        var json = ctx.User?.FindFirst("perms")?.Value;
+        var json = ctx.User?.FindFirst("actions")?.Value;
         if (!string.IsNullOrWhiteSpace(json))
         {
             try
@@ -35,13 +35,13 @@ public sealed class PermissionHandler : AuthorizationHandler<PermissionRequireme
 
 public sealed class PermissionPolicyProvider : IAuthorizationPolicyProvider
 {
-    private const string Prefix = "perm:";
+    private const string Prefix = "action:";
     private readonly DefaultAuthorizationPolicyProvider _fallback;
 
     public PermissionPolicyProvider(IOptions<AuthorizationOptions> options)
         => _fallback = new DefaultAuthorizationPolicyProvider(options);
 
-    public Task<AuthorizationPolicy?> GetDefaultPolicyAsync()  => _fallback.GetDefaultPolicyAsync();
+    public Task<AuthorizationPolicy?> GetDefaultPolicyAsync() => _fallback.GetDefaultPolicyAsync();
     public Task<AuthorizationPolicy?> GetFallbackPolicyAsync() => _fallback.GetFallbackPolicyAsync();
 
     public Task<AuthorizationPolicy?> GetPolicyAsync(string name)

@@ -347,8 +347,7 @@ namespace PlanManager.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCompany")
-                        .IsUnique();
+                    b.HasIndex("IdCompany");
 
                     b.HasIndex("IdPerson")
                         .IsUnique();
@@ -567,6 +566,40 @@ namespace PlanManager.Infrastructure.Migrations
                     b.ToTable("GroupPermission", (string)null);
                 });
 
+            modelBuilder.Entity("PlanManager.Domain.Entities.UserPermission.Permission", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedAt");
+
+                    b.Property<string>("IdGroupPermission")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("GroupPermission");
+
+                    b.Property<string>("KeyPermission")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("KeyPermission");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedAt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdGroupPermission");
+
+                    b.ToTable("Permission", (string)null);
+                });
+
             modelBuilder.Entity("PlanManager.Domain.Entities.Utils.LogActivity", b =>
                 {
                     b.Property<string>("Id")
@@ -730,8 +763,8 @@ namespace PlanManager.Infrastructure.Migrations
             modelBuilder.Entity("PlanManager.Domain.Entities.Profiles.Customer", b =>
                 {
                     b.HasOne("PlanManager.Domain.Entities.Profiles.Company", "Company")
-                        .WithOne()
-                        .HasForeignKey("PlanManager.Domain.Entities.Profiles.Customer", "IdCompany")
+                        .WithMany()
+                        .HasForeignKey("IdCompany")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_Customer_Company_IdCompany");
@@ -766,6 +799,18 @@ namespace PlanManager.Infrastructure.Migrations
                     b.Navigation("GroupPermission");
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("PlanManager.Domain.Entities.UserPermission.Permission", b =>
+                {
+                    b.HasOne("PlanManager.Domain.Entities.UserPermission.GroupPermission", "GroupPermission")
+                        .WithMany()
+                        .HasForeignKey("IdGroupPermission")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Permission_GroupPermission_IdGroupPermission");
+
+                    b.Navigation("GroupPermission");
                 });
 
             modelBuilder.Entity("PlanManager.Domain.Entities.PlanManager.Plan", b =>

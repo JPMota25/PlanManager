@@ -1,9 +1,4 @@
-﻿using PlanManager.Domain.Entities.PlanManager;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PlanManager.Domain.DTOs.Response.PlanManager.License
+﻿namespace PlanManager.Domain.DTOs.Response.PlanManager.License
 {
     public class LicenseAuthencityResult
     {

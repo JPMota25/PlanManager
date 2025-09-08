@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using MediatR;
 using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response.Company;

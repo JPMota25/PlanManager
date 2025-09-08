@@ -4,8 +4,9 @@ using Xunit;
 
 namespace PlanManager.Tests.Entities.Profiles;
 
-public class PersonTest {
-	private Person CreateValidPerson(
+public class PersonTest
+{
+    private Person CreateValidPerson(
         EDocumentType type = EDocumentType.Person,
         string? document = null,
         bool hasHouseNumber = true,

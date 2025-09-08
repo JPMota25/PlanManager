@@ -1,16 +1,13 @@
 ﻿using Flunt.Notifications;
-using MediatR;
-using PlanManager.Domain.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Flunt.Validations;
+using MediatR;
 using PlanManager.Aplication.DTOs;
+using PlanManager.Domain.Commands;
 using PlanManager.Domain.DTOs.Response.PlanManager.License;
 
 namespace PlanManager.Aplication.Commands.PlanManager.License.VerifyLicenseAuthencity
 {
-    public class GenerateLicenseCommand : Notifiable<Notification> ,ICommand, IRequest<ResultDto<LicenseAuthencityResult>>
+    public class GenerateLicenseCommand : Notifiable<Notification>, ICommand, IRequest<ResultDto<LicenseAuthencityResult>>
     {
         public void Validate()
         {

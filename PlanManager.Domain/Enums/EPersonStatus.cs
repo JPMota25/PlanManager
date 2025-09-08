@@ -1,6 +1,7 @@
 ﻿namespace PlanManager.Domain.Enums;
 
-public enum EPersonStatus {
-	Active,
-	Inactive
+public enum EPersonStatus
+{
+    Active,
+    Inactive
 }

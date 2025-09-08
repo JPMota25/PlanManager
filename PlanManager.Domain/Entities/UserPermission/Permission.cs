@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace PlanManager.Domain.Entities.UserPermission
@@ -22,11 +19,11 @@ namespace PlanManager.Domain.Entities.UserPermission
             Validate();
         }
         public string IdGroupPermission { get; private set; }
-        public GroupPermission? GroupPermission{ get; set; }
+        public GroupPermission? GroupPermission { get; set; }
         public string KeyPermission { get; private set; }
         public Permission()
         {
-            
+
         }
     }
 }

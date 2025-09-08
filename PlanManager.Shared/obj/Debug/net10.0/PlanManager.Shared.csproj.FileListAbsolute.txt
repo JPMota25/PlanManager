@@ -1,0 +1,12 @@
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\bin\Debug\net10.0\PlanManager.Shared.deps.json
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\bin\Debug\net10.0\PlanManager.Shared.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\bin\Debug\net10.0\PlanManager.Shared.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.AssemblyInfoInputs.cache
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.AssemblyInfo.cs
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.csproj.CoreCompileInputs.cache
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.sourcelink.json
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\refint\PlanManager.Shared.dll
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\PlanManager.Shared.pdb
+C:\Users\supor\Projects\PlanManager\PlanManager.Shared\obj\Debug\net10.0\ref\PlanManager.Shared.dll

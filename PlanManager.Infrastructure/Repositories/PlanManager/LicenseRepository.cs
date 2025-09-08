@@ -6,12 +6,14 @@ using PlanManager.Infrastructure.Data;
 
 namespace PlanManager.Infrastructure.Repositories.PlanManager;
 
-public class LicenseRepository : Repository<License>, ILicenseRepository {
-	private readonly PlanManagerDbContext _context;
+public class LicenseRepository : Repository<License>, ILicenseRepository
+{
+    private readonly PlanManagerDbContext _context;
 
-	public LicenseRepository(PlanManagerDbContext context) : base(context) {
-		_context = context;
-	}
+    public LicenseRepository(PlanManagerDbContext context) : base(context)
+    {
+        _context = context;
+    }
 
     public async Task<bool> VerifyIfAlreadyHasActiveLicense(string idSign)
     {

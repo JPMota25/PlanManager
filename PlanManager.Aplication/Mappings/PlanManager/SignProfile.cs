@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
 using PlanManager.Aplication.DTOs.Request.PlanManager;
-using PlanManager.Domain.Enums;
 
 namespace PlanManager.Aplication.Mappings.PlanManager
 {

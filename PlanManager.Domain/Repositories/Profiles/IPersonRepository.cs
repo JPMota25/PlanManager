@@ -2,6 +2,7 @@
 
 namespace PlanManager.Domain.Repositories.Profiles;
 
-public interface IPersonRepository : IRepository<Person> {
-	Task<bool> VerifyPersonUniqueKeys(Person person);
+public interface IPersonRepository : IRepository<Person>
+{
+    Task<bool> VerifyPersonUniqueKeys(Person person);
 }

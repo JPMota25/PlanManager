@@ -1,7 +1,4 @@
 ﻿using PlanManager.Domain.Entities.Profiles;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PlanManager.Aplication.Interfaces.Profiles
 {

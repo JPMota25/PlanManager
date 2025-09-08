@@ -2,12 +2,12 @@
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Enums;
 using PlanManager.Domain.Repositories.PlanManager;
-using PlanManager.Infrastructure.Repositories.PlanManager;
 
 namespace PlanManager.Aplication.Services.PlanManager;
 
-public class SignService : ISignService {
-	private readonly ISignRepository _signRepository;
+public class SignService : ISignService
+{
+    private readonly ISignRepository _signRepository;
     private readonly ILicenseRepository _licenseRepository;
 
     public SignService(ISignRepository signRepository, ILicenseRepository licenseRepository)
@@ -17,14 +17,16 @@ public class SignService : ISignService {
     }
 
 
-    public async Task<bool> VerifyIfSignExists(Sign sign) {
-		var result = await _signRepository.GetSign(sign);
-		return result != null;
-	}
+    public async Task<bool> VerifyIfSignExists(Sign sign)
+    {
+        var result = await _signRepository.GetSign(sign);
+        return result != null;
+    }
 
-	public async Task AddSign(Sign sign) {
-		await _signRepository.AddAsync(sign);
-	}
+    public async Task AddSign(Sign sign)
+    {
+        await _signRepository.AddAsync(sign);
+    }
 
     public async Task<Sign> GetSignByIdentification(string identification)
     {
@@ -33,7 +35,7 @@ public class SignService : ISignService {
 
     public async Task VerifyLicensesToUpdateSignStatus(string identification)
     {
-		//Devo pegar uma lista de Licenças vinculadas a essa assinatura, antigas e novas licenças
+        //Devo pegar uma lista de Licenças vinculadas a essa assinatura, antigas e novas licenças
 
         Sign sign = await _signRepository.GetSignByIdentification(identification);
         IList<License> licenses = await _licenseRepository.GetLicensesBySignIdentification(identification);

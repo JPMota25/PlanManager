@@ -13,9 +13,10 @@ builder.Configuration.AddJsonFile(Path.Combine(builder.Environment.ContentRootPa
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddHangfire(cfg =>
-	cfg.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions {
-		PrepareSchemaIfNecessary = true
-	}));
+    cfg.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions
+    {
+        PrepareSchemaIfNecessary = true
+    }));
 
 builder.Services.AddHangfireServer();
 builder.Services.AddHostedService<RegisterRecurringJobs>();

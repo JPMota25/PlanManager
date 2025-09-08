@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlanManager.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dad53b48bd39c4c3be991180ea749e23f1f6d8ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+114a819a8bfbab12359b993a111c4cf82abc15f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlanManager.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlanManager.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

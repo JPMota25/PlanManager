@@ -4,19 +4,22 @@ using System.Text;
 
 namespace PlanManager.Domain.Entities.Profiles;
 
-public class Customer : Entity {
-	public Customer(string idPerson, string idCompany) : base(true) {
-		IdPerson = idPerson;
+public class Customer : Entity
+{
+    public Customer(string idPerson, string idCompany) : base(true)
+    {
+        IdPerson = idPerson;
         IdCompany = idCompany;
-		GenerateSecretToken();
+        GenerateSecretToken();
         Identification = Guid.NewGuid().ToString().Replace("-", "");
-		Validate();
-	}
+        Validate();
+    }
 
-	private void Validate() {
-		var contract = new Contract<Notification>();
-		AddNotifications(contract);
-	}
+    private void Validate()
+    {
+        var contract = new Contract<Notification>();
+        AddNotifications(contract);
+    }
 
     public void GenerateSecretToken()
     {
@@ -24,11 +27,11 @@ public class Customer : Entity {
         SecretToken = Convert.ToBase64String(bytes);
     }
 
-	public string IdPerson { get; private set; }
-	public Person? Person { get; set; }
+    public string IdPerson { get; private set; }
+    public Person? Person { get; set; }
     public Company? Company { get; set; }
     public string IdCompany { get; private set; }
     public string Identification { get; private set; }
     public string SecretToken { get; private set; }
-	public Customer() { }
+    public Customer() { }
 }

@@ -8,18 +8,21 @@ using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Commands.Profiles.Customer.CreateCustomer;
 
-public class CreateCustomerCommand : Notifiable<Notification>, IRequest<ResultDto<PersonCreatedDto>>, ICommand {
-	public CreateCustomerCommand(Person person) {
-		Person = person;
-		Validate();
-	}
+public class CreateCustomerCommand : Notifiable<Notification>, IRequest<ResultDto<PersonCreatedDto>>, ICommand
+{
+    public CreateCustomerCommand(Person person)
+    {
+        Person = person;
+        Validate();
+    }
 
-	public void Validate() {
-		var contract = new Contract<Notification>().Requires();
+    public void Validate()
+    {
+        var contract = new Contract<Notification>().Requires();
         AddNotifications(Person.Notifications);
-		AddNotifications(contract);
-	}
+        AddNotifications(contract);
+    }
 
-	public Person Person { get; private set; }
+    public Person Person { get; private set; }
     public string IdCompany { get; private set; }
 }

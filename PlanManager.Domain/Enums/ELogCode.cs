@@ -1,32 +1,33 @@
 ﻿namespace PlanManager.Domain.Enums;
 
-public enum ELogCode {
-	// Success
-	CreatePerson = 1,
-	CreateUser = 2,
-	CreateAccess = 3,
-	CreateCustomer = 4,
-	CreatePurpose = 5,
-	CreateRole = 6,
-	CreateEmployee = 7,
-	CreateSchedule = 8,
-	CreateSecretary = 9,
-	SearchAvailable = 10,
-	Login = 11,
-	CreatePlanPermission = 12,
-	CreatePlan = 13,
-	CreatePlanPermissionRelation = 14,
-	CreateSign = 15,
-	CreateLicense = 16,
-	PasswordUpdate = 17,
-	CreateCompany = 18,
+public enum ELogCode
+{
+    // Success
+    CreatePerson = 1,
+    CreateUser = 2,
+    CreateAccess = 3,
+    CreateCustomer = 4,
+    CreatePurpose = 5,
+    CreateRole = 6,
+    CreateEmployee = 7,
+    CreateSchedule = 8,
+    CreateSecretary = 9,
+    SearchAvailable = 10,
+    Login = 11,
+    CreatePlanPermission = 12,
+    CreatePlan = 13,
+    CreatePlanPermissionRelation = 14,
+    CreateSign = 15,
+    CreateLicense = 16,
+    PasswordUpdate = 17,
+    CreateCompany = 18,
 
-	// Errors
-	DuplicatePersonKeys = 1001,
-	AvailableError = 1002,
-	ErrorGettingPurpose = 1003,
-	InvalidUserError = 1004,
-	ScheduledError = 1005,
-	ScheduledNullError = 1006,
-	SecretaryNullError = 1007
+    // Errors
+    DuplicatePersonKeys = 1001,
+    AvailableError = 1002,
+    ErrorGettingPurpose = 1003,
+    InvalidUserError = 1004,
+    ScheduledError = 1005,
+    ScheduledNullError = 1006,
+    SecretaryNullError = 1007
 }

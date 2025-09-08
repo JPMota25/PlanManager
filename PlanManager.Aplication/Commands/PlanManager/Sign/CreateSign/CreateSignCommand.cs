@@ -4,23 +4,25 @@ using MediatR;
 using PlanManager.Aplication.DTOs;
 using PlanManager.Aplication.DTOs.Response;
 using PlanManager.Domain.Commands;
-using PlanManager.Domain.Enums;
 
 namespace PlanManager.Aplication.Commands.PlanManager.Sign.CreateSign;
 
-public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<SignCreatedDto>>, ICommand {
-	public void Validate() {
-		var contract = new Contract<Notification>().Requires();
-		AddNotifications(contract);
-	}
+public class CreateSignCommand : Notifiable<Notification>, IRequest<ResultDto<SignCreatedDto>>, ICommand
+{
+    public void Validate()
+    {
+        var contract = new Contract<Notification>().Requires();
+        AddNotifications(contract);
+    }
 
-	public CreateSignCommand(string idCustomer, string idCompany) {
-		IdCustomer = idCustomer;
-		IdCompany = idCompany;
-		Validate();
-	}
+    public CreateSignCommand(string idCustomer, string idCompany)
+    {
+        IdCustomer = idCustomer;
+        IdCompany = idCompany;
+        Validate();
+    }
 
-	public string IdCustomer { get; private set; }
-	public string IdCompany { get; private set; }
+    public string IdCustomer { get; private set; }
+    public string IdCompany { get; private set; }
     public string IdPlan { get; private set; }
 }

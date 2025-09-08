@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace PlanManager.Domain.Entities.Profiles
@@ -15,7 +12,7 @@ namespace PlanManager.Domain.Entities.Profiles
             contract = contract.IsNotNullOrWhiteSpace(IdPerson, "Company.IdPerson", "IdPerson is required");
             AddNotifications(contract);
         }
-        public Company(string idPerson): base(true)
+        public Company(string idPerson) : base(true)
         {
             IdPerson = idPerson;
             Validate();
@@ -26,7 +23,7 @@ namespace PlanManager.Domain.Entities.Profiles
 
         protected Company()
         {
-            
+
         }
     }
 }

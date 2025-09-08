@@ -8,23 +8,25 @@ using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Mappings.Profiles;
 
-public class UserProfile : Profile {
-	public UserProfile() {
-		CreateMap<LoginDto, LoginCommand>().ForMember(x => x.Username, y => y.MapFrom(x => x.Username))
-			.ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
+public class UserProfile : Profile
+{
+    public UserProfile()
+    {
+        CreateMap<LoginDto, LoginCommand>().ForMember(x => x.Username, y => y.MapFrom(x => x.Username))
+            .ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
 
-		CreateMap<CreatePersonDto, Person>().ConvertUsing(x => new Person(x.FirstName, x.LastName, x.Email, x.Document, x.Type, x.CountryCode, x.DDD,
-			x.NumberWithDigit, x.Neighboorhood, x.HouseNumber, x.HasHouseNumber, x.Complement, x.Street, x.City, x.State, x.Country, x.Zipcode));
+        CreateMap<CreatePersonDto, Person>().ConvertUsing(x => new Person(x.FirstName, x.LastName, x.Email, x.Document, x.Type, x.CountryCode, x.DDD,
+            x.NumberWithDigit, x.Neighboorhood, x.HouseNumber, x.HasHouseNumber, x.Complement, x.Street, x.City, x.State, x.Country, x.Zipcode));
 
-		CreateMap<CreateUserDto, CreateUserCommand>().ForMember(x => x.Person, y => y.MapFrom(x => x.Person))
-			.ForMember(x => x.Username, y => y.MapFrom(x => x.Username)).ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
+        CreateMap<CreateUserDto, CreateUserCommand>().ForMember(x => x.Person, y => y.MapFrom(x => x.Person))
+            .ForMember(x => x.Username, y => y.MapFrom(x => x.Username)).ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
 
-		CreateMap<ChangePasswordDto, ChangePasswordCommand>().ForMember(x => x.NewPassword, y => y.MapFrom(x => x.NewPassword))
-			.ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
+        CreateMap<ChangePasswordDto, ChangePasswordCommand>().ForMember(x => x.NewPassword, y => y.MapFrom(x => x.NewPassword))
+            .ForMember(x => x.Password, y => y.MapFrom(x => x.Password));
 
-		CreateMap<LoginReportQueryDto, LoginReportCommand>().ForMember(x => x.Email, y => y.MapFrom(x => x.Email))
-			.ForMember(x => x.Document, y => y.MapFrom(x => x.Document)).ForMember(x => x.FinalTime, y => y.MapFrom(x => x.FinalTime))
-			.ForMember(x => x.InitialTime, y => y.MapFrom(x => x.InitialTime)).ForMember(x => x.Skip, y => y.MapFrom(x => x.Skip))
-			.ForMember(x => x.Take, y => y.MapFrom(x => x.Take));
-	}
+        CreateMap<LoginReportQueryDto, LoginReportCommand>().ForMember(x => x.Email, y => y.MapFrom(x => x.Email))
+            .ForMember(x => x.Document, y => y.MapFrom(x => x.Document)).ForMember(x => x.FinalTime, y => y.MapFrom(x => x.FinalTime))
+            .ForMember(x => x.InitialTime, y => y.MapFrom(x => x.InitialTime)).ForMember(x => x.Skip, y => y.MapFrom(x => x.Skip))
+            .ForMember(x => x.Take, y => y.MapFrom(x => x.Take));
+    }
 }

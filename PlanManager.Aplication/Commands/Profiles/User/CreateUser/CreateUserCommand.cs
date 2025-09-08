@@ -8,20 +8,23 @@ using PlanManager.Domain.Entities.Profiles;
 
 namespace PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 
-public class CreateUserCommand : Notifiable<Notification>, IRequest<ResultDto<UserCreatedDto>>, ICommand {
-	public void Validate() {
-		var contract = new Contract<Notification>().Requires();
-		AddNotifications(contract);
-	}
+public class CreateUserCommand : Notifiable<Notification>, IRequest<ResultDto<UserCreatedDto>>, ICommand
+{
+    public void Validate()
+    {
+        var contract = new Contract<Notification>().Requires();
+        AddNotifications(contract);
+    }
 
-	public CreateUserCommand(Person person, string username, string password) {
-		Person = person;
-		Username = username;
-		Password = password;
-		Validate();
-	}
+    public CreateUserCommand(Person person, string username, string password)
+    {
+        Person = person;
+        Username = username;
+        Password = password;
+        Validate();
+    }
 
-	public Person Person { get; private set; }
-	public string Username { get; private set; }
-	public string Password { get; private set; }
+    public Person Person { get; private set; }
+    public string Username { get; private set; }
+    public string Password { get; private set; }
 }

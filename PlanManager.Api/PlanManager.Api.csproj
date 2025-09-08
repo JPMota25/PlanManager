@@ -26,6 +26,7 @@
         <ProjectReference Include="..\PlanManager.Aplication\PlanManager.Aplication.csproj" />
         <ProjectReference Include="..\PlanManager.Domain\PlanManager.Domain.csproj" />
         <ProjectReference Include="..\PlanManager.Infrastructure\PlanManager.Infrastructure.csproj" />
+        <ProjectReference Include="..\PlanManager.Shared\PlanManager.Shared.csproj" />
     </ItemGroup>
 
 </Project>

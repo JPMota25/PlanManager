@@ -10,26 +10,29 @@ namespace PlanManager.Api.Controllers.PlanManager;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LicenseController : ControllerBase {
-	private readonly IMapper _mapper;
-	private readonly IMediator _mediator;
+public class LicenseController : ControllerBase
+{
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
-	public LicenseController(IMapper mapper, IMediator mediator) {
-		_mapper = mapper;
-		_mediator = mediator;
-	}
+    public LicenseController(IMapper mapper, IMediator mediator)
+    {
+        _mapper = mapper;
+        _mediator = mediator;
+    }
 
-	[HttpPost("v1/create")]	
-	public async Task<IActionResult> Create([FromBody] CreateLicenseDto request) {
-		var command = _mapper.Map<CreateLicenseCommand>(request);
-		var result = await _mediator.Send(command);
-		return Ok(result);
-	}
+    [HttpPost("v1/create")]
+    public async Task<IActionResult> Create([FromBody] CreateLicenseDto request)
+    {
+        var command = _mapper.Map<CreateLicenseCommand>(request);
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
 
-	[HttpPost("v1/generatejwt")]
-	public async Task<IActionResult> Verify([FromBody] GenerateJwt request)
-	{
-		var command = _mapper.Map<GenerateLicenseCommand>(request);
-		return Ok(await _mediator.Send(command));
-	}
+    [HttpPost("v1/generatejwt")]
+    public async Task<IActionResult> Verify([FromBody] GenerateJwt request)
+    {
+        var command = _mapper.Map<GenerateLicenseCommand>(request);
+        return Ok(await _mediator.Send(command));
+    }
 }

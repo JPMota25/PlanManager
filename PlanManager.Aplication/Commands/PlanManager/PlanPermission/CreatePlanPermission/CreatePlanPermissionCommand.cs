@@ -7,11 +7,13 @@ using PlanManager.Domain.Commands;
 
 namespace PlanManager.Aplication.Commands.PlanManager.PlanPermission.CreatePlanPermission;
 
-public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<ResultDto<PlanPermissionCreatedDto>>, ICommand {
-	public void Validate() {
-		var contract = new Contract<Notification>().Requires();
-		AddNotifications(contract);
-	}
+public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<ResultDto<PlanPermissionCreatedDto>>, ICommand
+{
+    public void Validate()
+    {
+        var contract = new Contract<Notification>().Requires();
+        AddNotifications(contract);
+    }
 
     public CreatePlanPermissionCommand(string name, string idCompany)
     {
@@ -21,5 +23,5 @@ public class CreatePlanPermissionCommand : Notifiable<Notification>, IRequest<Re
     }
 
     public string Name { get; private set; }
-	public string IdCompany { get; private set; }
+    public string IdCompany { get; private set; }
 }

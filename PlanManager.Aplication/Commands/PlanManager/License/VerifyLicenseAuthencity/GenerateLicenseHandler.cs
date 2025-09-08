@@ -37,10 +37,10 @@ namespace PlanManager.Aplication.Commands.PlanManager.License.VerifyLicenseAuthe
 
             var customer = await _customerService.GetCustomerByIdentification(request.CustomerIdentification);
             if (customer == null)
-                return ResultDto<LicenseAuthencityResult>.Fail( new Notification("Customer.Validation", "Customer not exists or identification is invalid"));
+                return ResultDto<LicenseAuthencityResult>.Fail(new Notification("Customer.Validation", "Customer not exists or identification is invalid"));
 
             await _signService.VerifyLicensesToUpdateSignStatus(request.SignIdentification);
-             
+
             //trazer as permissões que o plano possui
             IList<Domain.Entities.PlanManager.PlanPermission?> permissions = await _signService.GetPlanPermissionBySignIdentification(request.SignIdentification);
 

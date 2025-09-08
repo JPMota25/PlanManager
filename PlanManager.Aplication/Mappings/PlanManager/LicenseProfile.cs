@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using PlanManager.Aplication.Commands.PlanManager.License.CreateLicense;
 using PlanManager.Aplication.Commands.PlanManager.License.VerifyLicenseAuthencity;
 using PlanManager.Aplication.DTOs.Request.PlanManager;

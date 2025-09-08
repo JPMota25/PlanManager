@@ -3,7 +3,6 @@ using PlanManager.Aplication.Interfaces.PlanManager;
 using PlanManager.Domain.Entities.PlanManager;
 using PlanManager.Domain.Entities.Profiles;
 using PlanManager.Domain.Repositories.PlanManager;
-using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -11,8 +10,9 @@ using System.Text.Json;
 
 namespace PlanManager.Aplication.Services.PlanManager;
 
-public class LicenseService : ILicenseService {
-	private readonly ILicenseRepository _licenseRepository;
+public class LicenseService : ILicenseService
+{
+    private readonly ILicenseRepository _licenseRepository;
     private readonly ISignService _signService;
 
     public LicenseService(ILicenseRepository licenseRepository, ISignService signService)
@@ -22,13 +22,15 @@ public class LicenseService : ILicenseService {
     }
 
     //true = exists, false = not exists
-    public async Task<bool> VerifyIfAlreadyHasActiveLicense(string idSign) {
-		return await _licenseRepository.VerifyIfAlreadyHasActiveLicense(idSign);
-	}
+    public async Task<bool> VerifyIfAlreadyHasActiveLicense(string idSign)
+    {
+        return await _licenseRepository.VerifyIfAlreadyHasActiveLicense(idSign);
+    }
 
-	public async Task AddLicense(License license) {
-		await _licenseRepository.AddAsync(license);
-	}
+    public async Task AddLicense(License license)
+    {
+        await _licenseRepository.AddAsync(license);
+    }
 
     public async Task<string> GenerateJwt(Customer customer, IList<PlanPermission> permissions, string signIdentification)
     {

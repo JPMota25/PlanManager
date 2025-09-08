@@ -3,7 +3,7 @@
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
 public sealed class PermissionAttribute : AuthorizeAttribute
 {
-    private const string Prefix = "perm:";
+    private const string Prefix = "action:";
 
     public string Key { get; }
 
