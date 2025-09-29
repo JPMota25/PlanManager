@@ -5,6 +5,7 @@ using PlanManager.Aplication.Commands.Profiles.User.ChangePassword;
 using PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 using PlanManager.Aplication.Commands.Profiles.User.Login;
 using PlanManager.Aplication.Commands.Profiles.User.LoginReport;
+using PlanManager.Aplication.Commands.Profiles.User.ValidateToken;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 using PlanManager.Aplication.DTOs.Request.Profiles.User;
 
@@ -55,10 +56,11 @@ public class UserController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost()]
-    public async Task<IActionResult> EditUser([FromBody] RequestEditUser request)
+    [HttpPost("v1/validateToken")]
+    public async Task<IActionResult> ValidateToken([FromBody] RequestTokenValidation request)
     {
-        var command = _mapper.Map<EditUserCommand>(request);
+        var command = _mapper.Map<ValidateTokenCommand>(request);
         var response = await _mediator.Send(command);
+        return Ok(response);
     }
 }

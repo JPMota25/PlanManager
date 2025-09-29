@@ -20,14 +20,14 @@ public class ResultDto<T> where T : class
     }
 
     public string Success { get; private set; }
-    public IList<T> Data { get; private set; } = [];
+    public T? Data { get; private set; } 
     public IReadOnlyCollection<Notification> Errors { get; private set; } = [];
 
 
     public ResultDto(string success, T data)
     {
         Success = success;
-        Data.Add(data);
+        Data = data;
     }
 
     public ResultDto(string success, IReadOnlyCollection<Notification> errors)

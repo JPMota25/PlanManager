@@ -30,7 +30,7 @@ public class LicenseController : ControllerBase
     }
 
     [HttpPost("v1/generatejwt")]
-    public async Task<IActionResult> Verify([FromBody] GenerateJwt request)
+    public async Task<IActionResult> GenerateJwt([FromBody] GenerateJwt request)
     {
         var command = _mapper.Map<GenerateLicenseCommand>(request);
         return Ok(await _mediator.Send(command));

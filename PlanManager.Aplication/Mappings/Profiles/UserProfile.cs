@@ -3,6 +3,7 @@ using PlanManager.Aplication.Commands.Profiles.User.ChangePassword;
 using PlanManager.Aplication.Commands.Profiles.User.CreateUser;
 using PlanManager.Aplication.Commands.Profiles.User.Login;
 using PlanManager.Aplication.Commands.Profiles.User.LoginReport;
+using PlanManager.Aplication.Commands.Profiles.User.ValidateToken;
 using PlanManager.Aplication.DTOs.Request.Profiles;
 using PlanManager.Aplication.DTOs.Request.Profiles.Person;
 using PlanManager.Aplication.DTOs.Request.Profiles.User;
@@ -30,5 +31,7 @@ public class UserProfile : Profile
             .ForMember(x => x.Document, y => y.MapFrom(x => x.Document)).ForMember(x => x.FinalTime, y => y.MapFrom(x => x.FinalTime))
             .ForMember(x => x.InitialTime, y => y.MapFrom(x => x.InitialTime)).ForMember(x => x.Skip, y => y.MapFrom(x => x.Skip))
             .ForMember(x => x.Take, y => y.MapFrom(x => x.Take));
+
+        CreateMap<RequestTokenValidation, ValidateTokenCommand>().ForMember(x => x.Token, y => y.MapFrom(x => x.Token));
     }
 }
